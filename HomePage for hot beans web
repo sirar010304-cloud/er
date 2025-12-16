@@ -62,9 +62,15 @@ html, body {
 }
 
 
+.navbar a, .dropdown .dropbtn {
+    transition: background-color 0.15s ease, border-radius 0.12s ease;
+    border-radius: 6px;
+}
+
 .navbar a:hover,
 .dropdown:hover .dropbtn {
     background-color:#17adb3;
+    border-radius: 8px;
 }
 
 
@@ -146,15 +152,26 @@ box-shadow: 0 8px 20px rgba(0,0,0,0.3);
  display: inline-block;
  padding: 10px 25px; 
  color: black; 
- background-color: #ddd; 
+ background-color: #14a6ab; 
  text-align: center; 
  cursor: pointer; 
- } 
+ border-radius: 14px; /* rounded */
+ transition: background-color 0.18s ease, transform 0.12s ease, box-shadow 0.12s ease;
+ box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+ }
  
  .hero-text button:hover { 
   background-color: #555; 
   color: white;
-  }
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+ }
+
+.hero-text button:focus-visible {
+  outline: 3px solid rgba(9,49,51,0.18);
+  outline-offset: 3px;
+  border-radius: 12px;
+ }
 
 
 .under-hero {
@@ -256,7 +273,7 @@ footer {
 
 .footer-column a {
  display: block;
- color: #ddd;
+ color: #093133;
  text-decoration: none;
  margin: 8px 0;
  font-size: 15px;
