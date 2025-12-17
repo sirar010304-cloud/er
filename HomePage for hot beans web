@@ -108,7 +108,7 @@ html, body {
 
 .hero-image {
  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
- url("https://i.pinimg.com/1200x/3c/54/c4/3c54c4f799b1c481530a5be2c0aa7160.jpg");
+ url("https://i.pinimg.com/1200x/56/8b/09/568b09fee4a345af7af8d5de29fbda9b.jpg");
  height: 55vh;
  background-color: #2b2b2b; /* fallback if external image doesn't load */
  min-height: 220px;
@@ -390,7 +390,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
+} 
+  
 </style>
  </head>
  
@@ -399,23 +400,23 @@ body {
 
     <div class="navbar">
    
-    <a href=file:///C:/Users/ridal/OneDrive/Documents/Hot%20Beans%20Web.html>Home</a>
+    <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web.html>Home</a>
     <div class="dropdown">
      <button class="dropbtn" aria-expanded="false" id="aboutBtn">About us</button>
      <div class="dropdown-content">
-    <a href=file:///C:/Users/ridal/OneDrive/Documents/Contact%20us%20.html>Contact us</a>
+    <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
     <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
       <a href="">History</a>
      </div>
     </div>
-    <a href=file:///C:/Users/ridal/OneDrive/Documents/meet%20our%20team.html>Meet our team</a>
-    <a href=file:///C:/Users/ridal/OneDrive/Documents/vancancies%20.html>Vacancies</a>
-    <a href=file:///C:/Users/ridal/OneDrive/Documents/application.html>Application form</a>
-     <a href=file:///C:/Users/ridal/OneDrive/Documents/Contact%20us%20.html>Courses</a>
+    <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20beans%20web-Meet%20our%20team.html>Meet our team</a>
+    <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-Vacancies.html>Vacancies</a>
+    <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-Application.html>Application form</a>
+     <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20beans%20web-Courses.html>Courses</a>
  </div>
    
     <div class="hero-image"> 
-    <img class="hero-fallback" src="https://i.pinimg.com/1200x/3c/54/c4/3c54c4f799b1c481530a5be2c0aa7160.jpg" alt="Coffee beans background">
+    <img class="hero-fallback" src="https://i.pinimg.com/1200x/79/67/4e/79674e3309b594e107ed6593185062a2.jpg" alt="Coffee beans background">
   <div class="hero-text">
    <h1 style="font-size:50px">Welcome to Hot Beans Web</h1>
    <p>erm</p> 
@@ -426,8 +427,8 @@ body {
  <div class="under-hero">
      <img src="https://i.pinimg.com/736x/92/13/a9/9213a9191713d6c453ca1f137ef89aaa.jpg" alt="Close-up of coffee beans on a wooden surface">
      <div class="under-hero-text">
-         <h2>Freshly Roasted, Responsibly Sourced</h2>
-         <p>At Hot Beans, we roast small batches of specialty coffee — focusing on flavour, sustainability and our local community. Join our workshops or explore our courses to deepen your coffee knowledge.</p>
+         <h2>About us</h2>
+         <p>At Hot Beans Web we provide professional web development and digital solutions. We are passionate tech company dedicated in creating innovative solutions. We specialise in web development, user design and custom digital solutions that helps businesses grow their online presence. We focus on delivering results that make a real impact. At hot beans web, we believe great technology should be accessible, efficient and future-ready.</p>
          <button class="under-hero-cta" onclick="location.href='file:///C:/Users/ridal/OneDrive/Documents/application.html'">Learn more</button>
      </div>
  </div>
