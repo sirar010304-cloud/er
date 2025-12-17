@@ -404,6 +404,7 @@ body {
     <div class="dropdown">
      <button class="dropbtn" aria-expanded="false" id="aboutBtn">About us</button>
      <div class="dropdown-content">
+	 <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-About%20us%20.html>About us</a>
     <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
     <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
       <a href="">History</a>
@@ -419,7 +420,7 @@ body {
     <img class="hero-fallback" src="https://i.pinimg.com/1200x/79/67/4e/79674e3309b594e107ed6593185062a2.jpg" alt="Coffee beans background">
   <div class="hero-text">
    <h1 style="font-size:50px">Welcome to Hot Beans Web</h1>
-   <p>erm</p> 
+   <p>Your future in web development starts with us</p> 
     <button>Apply now</button> 
 	</div> 
  </div>
