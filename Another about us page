@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Hot Beans Web</title>
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Times New Roman;
+}
+
+
+.navbar{
+    overflow: hidden;
+    background-color: #093133;
+}
+
+
+.navbar a {
+ float: left;
+ font-size: 16px;
+ color:white;
+ text-align: center;
+ padding: 14px 16px;
+ text-decoration:none;
+}
+
+
+.dropdown {
+ float: left;
+ overflow: hidden;
+}
+
+
+.dropdown .dropbtn {
+ font-size: 16px;
+ border: none;
+ outline: none;
+ color: white;
+ padding: 14px 16px;
+ background-color: inherit;
+ font-family: inherit;
+ margin: 0;
+}
+
+
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+    background-color:#17adb3;
+}
+
+
+.dropdown-content {
+ display:none;
+ position: absolute;
+ background-color: #043b3d;
+ min-width: 160px;
+ box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+ z-index: 1;
+}
+
+
+.dropdown-content a {
+ float: none;
+ color: white;
+ padding: 12px 16px;
+ text-decoration: none;
+ display: block;
+ text-align: left;
+}
+
+
+.dropdown-content a:hover {
+ background-color: #17adb3;
+}
+ 
+.dropdown:hover .dropdown-content {
+ display: block;
+}
+
+
+footer {
+    background: #000;
+    color: white;
+    padding: 40px 0;
+    margin-top: auto;
+    font-family: Arial, sans-serif;
+}
+
+
+.footer-top {
+ display: flex;
+ justify-content: space-around;
+ max-width: 1200px;
+ margin:auto;
+ padding-bottom: 40px;
+ border-bottom: 1px solid #333;
+}
+
+
+.footer-column {
+ width: 30%;
+}
+
+
+.footer-column h3 {
+ font-size: 20px;
+ margin-bottom: 10px;
+ border-bottom: 1px solid #555;
+ padding-bottom: 5px;
+}
+
+
+.footer-column a {
+ display: block;
+ color: #043b3d;
+ text-decoration: none;
+ margin: 8px 0;
+ font-size: 15px;
+}
+
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+
+.newsletter {
+ max-width: 1200px;
+ margin: 40px auto;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+
+
+.newsletter-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.newsletter-icon{
+    font-size:32px;
+    border: 2px solid #093133;
+    padding: 8px;
+    color:#093133;
+}
+
+
+.subscribe-btn {
+ background: #093133;
+ color: black;
+ padding: 12px 30px;
+ border: none;
+ font-size: 16px;
+ cursor: pointer;
+}
+
+
+.subscribe-btn:hover {
+    background: #baff8b;
+}
+
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20;
+}
+
+
+.social-icons span{
+    font-size: 24px;
+    margin:0 10px;
+    cursor: pointer ;
+    color: #ccc;
+}
+
+
+.social-icons span:hover {
+    color:white;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+</style>
+ </head>
+ 
+ <body style="background-color:white;">
+ 
+    <div class="navbar">
+   
+        <a href=Hot%20Beans%20Web.html>Home</a>
+    <div class="dropdown">
+     <button class="dropbtn">About us
+        <i class="fa fa-caret-down"></i>
+     </button>
+     <div class="dropdown-content">
+      <a href=Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
+      <a href=Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
+      <a href="">History</a>
+     </div>
+    </div>
+    <a href=Hot%20beans%20web-Meet%20our%20team.html>Meet our team</a>
+    <a href=Hot%20Beans%20Web-Vacancies.html>Vacancies</a>
+    <a href=Hot%20Beans%20Web-Application.html>Application form</a>
+     <a href=Hot%20beans%20web-Courses.html>Courses</a>
+ </div>
+   
+ <footer>
+     
+     <div class="footer-top">
+        <div class="footer-column">
+            <h3> Company Information</h3>
+            <a href="#">About us</a>
+            <a href="#">Company overview</a>
+            <a href="#">Why work with us</a>
+            <a href="#">Research</a>
+            <a href="#">Careers</a>
+        </div>
+     
+        <div class="footer-column">
+         <h3>News and Events</h3>
+         <a href="#">Events calendar</a>
+         <a href="#">company blog</a>
+         <a href="#">Newsroom</a>
+         <a href="#">Webinars</a>
+        </div>
+
+
+        <div class="footer-column">
+            <h3>Extra information</h3>
+            <a href="#">Developers</a>
+            <a href="#">Training</a>
+            <a href="#">Community</a>
+            <a href="#">Documentation</a>
+        </div>
+   
+    </div>
+     
+    <div class="newsletter">
+        <div class="newsletter-left">
+          <span class="newsletter-icon">✉</span>
+          <p>Sign up for Hot Beans Web</p>
+        </div>
+    </div>
+
+
+    <div class="footer-bottom">
+        <p>Follow Hot Beans Web</p>
+        <div class="social-icons">
+         <span>𝕏</span>
+         <span>𝐟</span>
+         <span>✉</span>
+        </div>
+    </div>
+
+
+</footer>
+
+
+</body>
+</html>
