@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Hot Beans Web</title>
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Times New Roman;
+}
+
+
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    overflow: hidden;
+    background-color: #093133;
+    display: flex;
+    align-items: center;
+}
+
+
+.navbar a {
+ float: left;
+ font-size: 16px;
+ color:white;
+ text-align: center;
+ padding: 14px 16px;
+ text-decoration:none;
+}
+
+
+.dropdown {
+ float: left;
+ overflow: hidden;
+}
+
+
+.dropdown .dropbtn {
+ font-size: 16px;
+ border: none;
+ outline: none;
+ color: white;
+ padding: 14px 16px;
+ background-color: inherit;
+ font-family: inherit;
+ margin: 0;
+}
+
+
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+    background-color:#17adb3;
+}
+
+
+.dropdown-content {
+ display:none;
+ position: absolute;
+ background-color: #043b3d;
+ min-width: 160px;
+ box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+ z-index: 1100;
+}
+
+
+.dropdown-content a {
+ float: none;
+ color: white;
+ padding: 12px 16px;
+ text-decoration: none;
+ display: block;
+ text-align: left;
+}
+
+
+.dropdown-content a:hover {
+ background-color: #17adb3;
+}
+ 
+.dropdown:hover .dropdown-content {
+ display: block;
+}
+
+
+footer {
+    background: #000;
+    color: white;
+    padding: 40px 0;
+    margin-top: auto;
+    font-family: Arial, sans-serif;
+}
+
+
+.footer-top {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 20px;
+ justify-content: space-around;
+ max-width: 1200px;
+ margin:auto;
+ padding-bottom: 40px;
+ border-bottom: 1px solid #333;
+} 
+
+
+.footer-column {
+ width: 30%;
+ min-width: 220px;
+}
+
+
+.footer-column h3 {
+ font-size: 20px;
+ margin-bottom: 10px;
+ border-bottom: 1px solid #555;
+ padding-bottom: 5px;
+}
+
+
+.footer-column a {
+ display: block;
+ color: #ccc;
+ text-decoration: none;
+ margin: 8px 0;
+ font-size: 15px;
+ transition: color 0.2s;
+}
+
+
+.footer-column a:hover {
+    text-decoration: underline;
+    color: #fff;
+} 
+
+
+.newsletter {
+ max-width: 1200px;
+ margin: 40px auto;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+
+
+.newsletter-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.newsletter-left p {
+    color: #ccc;
+    margin: 0;
+}
+
+.newsletter-icon{
+    font-size:32px;
+    border: 2px solid #fff;
+    padding: 8px;
+    color:#fff;
+}
+
+
+.subscribe-btn {
+ background: #093133;
+ color: black;
+ padding: 12px 30px;
+ border: none;
+ font-size: 16px;
+ cursor: pointer;
+}
+
+
+.subscribe-btn:hover {
+    background: #baff8b;
+}
+
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    color: #ccc;
+} 
+
+
+.social-icons span{
+    font-size: 24px;
+    margin:0 10px;
+    cursor: pointer ;
+    color: #ccc;
+}
+
+
+.social-icons span:hover {
+    color:white;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 56px; 
+}
+
+
+.hero {
+    width: 100%;
+    height: 720px; 
+    margin-top: -56px; 
+    background-image: url('https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1600&q=60');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(4,130,160,0.45), rgba(11,123,127,0.35));
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+}
+.hero h1 {
+    font-size: 44px;
+    margin: 0 0 8px 0;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+.hero p {
+    margin: 0 0 18px 0;
+    color: rgba(255,255,255,0.95);
+}
+.hero .cta-primary {
+    background: #fff;
+    color: #0482a0;
+    padding: 12px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-right: 12px;
+}
+.hero .cta-ghost {
+    background: transparent;
+    color: #fff;
+    padding: 12px 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+}
+@media (max-width: 900px) {
+    .hero { height: 720px; }
+    .hero h1 { font-size: 32px; }
+}
+@media (max-width: 640px) {
+    .hero { height: 380px; }
+    .hero h1 { font-size: 24px; }
+}
+
+.team-section {
+    background: #fff;
+    color: #222;
+    padding: 60px 0;
+} 
+.team-banner {
+    max-width: 1200px;
+    margin: 0 auto 10px;
+    background: #0482a0;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 0;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+.team-intro {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+} 
+.team-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+.team-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 140px;
+    transition: margin-top 0.35s ease;
+    position: relative; 
+}
+
+.team-meta {
+    background: linear-gradient(180deg, #0b7b7f 0%, #0482a0 100%); 
+    padding: 14px;
+    border: 1px solid #036e72;
+    box-sizing: border-box;
+    text-align: left;
+    color: #fff;
+    min-height: 80px;
+}
+
+.team-meta.small { min-height: 100px; }
+.team-meta.medium { min-height: 140px; }
+.team-meta.large { min-height: 170px; }
+.team-meta.xlarge { min-height: 220px; }
+
+.team-meta .team-name {
+    position: static;
+    display: block;
+    background: rgba(0,0,0,0.12);
+    color: #fff;
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 8px;
+}
+
+.team-meta .team-desc {
+    position: static;
+    color: rgba(255,255,255,0.95);
+    font-size: 12px;
+    margin: 0 0 8px 0;
+}
+
+.team-section { position: relative; }
+.team-section::before,
+.team-section::after {
+    content: "";
+    position: absolute;
+    top: 18%;
+    bottom: 18%;
+    width: 120px;
+    border-radius: 6px;
+    opacity: 0.12;
+    pointer-events: none;
+}
+.team-section::before {
+    left: 28px;
+    background: linear-gradient(180deg, #0482a0 0%, transparent 70%);
+    transform: skewX(-6deg);
+}
+.team-section::after {
+    right: 28px;
+    background: linear-gradient(180deg, #0482a0 0%, transparent 70%);
+    transform: skewX(6deg);
+}
+
+
+.team-wrap:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    right: -9px;
+    width: 2px;
+    background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.08) 40%, rgba(4,130,160,0.5) 50%, rgba(255,255,255,0.08) 60%, transparent 100%);
+    opacity: 0.55;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+
+.team-grid .team-wrap:nth-child(1) { margin-top: 0px; }
+.team-grid .team-wrap:nth-child(2) { margin-top: 20px; }
+.team-grid .team-wrap:nth-child(3) { margin-top: 40px; }
+.team-grid .team-wrap:nth-child(4) { margin-top: 20px; }
+.team-grid .team-wrap:nth-child(5) { margin-top: 0px; }
+
+
+.team-wrap .team-card { width: 100%; }
+@media (max-width: 900px) {
+    .team-wrap { width: 120px; }
+    .team-grid .team-wrap:nth-child(2),
+    .team-grid .team-wrap:nth-child(4) { margin-top: 12px; }
+    .team-grid .team-wrap:nth-child(3) { margin-top: 20px; }
+    .team-wrap:not(:last-child)::after { right: -7px; }
+}
+@media (max-width: 640px) {
+    .team-wrap { width: 45%; }
+    
+    .team-grid .team-wrap:nth-child(1),
+    .team-grid .team-wrap:nth-child(2),
+    .team-grid .team-wrap:nth-child(3),
+    .team-grid .team-wrap:nth-child(4),
+    .team-grid .team-wrap:nth-child(5) { margin-top: 0; }
+    .team-wrap:not(:last-child)::after { display: none; }
+} 
+.team-card {
+    width: 140px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: #fff;
+    box-shadow: inset 0 -60px 60px rgba(0,0,0,0.35), 0 10px 20px rgba(0,0,0,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    border: 1px solid #eee;
+}
+.team-card.small { height: 320px; }
+.team-card.medium { height: 420px; }
+.team-card.large { height: 520px; }
+.team-card.xlarge { height: 600px; }
+
+.team-desc {
+    
+    color: rgba(0,0,0,0.8);
+    font-size: 11px;
+    line-height: 1.2;
+    opacity: 0.95;
+}
+.team-name {
+    
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.team-card:hover {
+    transform: translateY(-12px);
+}
+@media (max-width: 900px) {
+    .team-grid { gap: 12px; }
+    .team-card { width: 120px; }
+    .team-banner { font-size: 30px; padding: 10px 0; }
+}
+@media (max-width: 640px) {
+    .team-grid { flex-wrap: wrap; justify-content: center; }
+    .team-card { width: 45%; }
+    .team-intro { padding: 0 16px; }
+}
+</style>
+ </head>
+
+ <body style="background-color:#084446;">
+
+    <div class="navbar">
+   
+        <a href=Hot%20Beans%20Web.html>Home</a>
+    <div class="dropdown">
+     <button class="dropbtn">About us
+        <i class="fa fa-caret-down"></i>
+     </button>
+     <div class="dropdown-content">
+      <a href=Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
+      <a href=Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
+      <a href="">History</a>
+     </div>
+    </div>
+    <a href=Hot%20beans%20web-Meet%20our%20team.html>Meet our team</a>
+    <a href=Hot%20Beans%20Web-Vacancies.html>Vacancies</a>
+    <a href=Hot%20Beans%20Web-Application.html>Application form</a>
+     <a href=Hot%20beans%20web-Courses.html>Courses</a>
+ </div>
+ 
+ <section class="hero" role="banner" aria-label="Hero">
+    <div class="hero-content">
+        <h1>Meet the people behind Hot Beans</h1>
+        <p>Creative minds. Bold ideas. Real impact.</p>
+        <div class="hero-ctas">
+            <a class="cta-primary" href="#">See open roles</a>
+            <a class="cta-ghost" href="#">Contact us</a>
+        </div>
+    </div>
+</section>
+
+ <section class="team-section">
+    <div class="team-banner">MEET OUR TEAM</div>
+
+    <div class="team-grid">
+        <div class="team-wrap">
+            <div class="team-card medium" style="background-image:url('https://s.isanook.com/mv/0/ud/34/171763/s_6d2b400bly1hlpsojnm49j22bc3.jpg?ip/resize/w728/q80/jpg')"></div>
+            <div class="team-meta medium">
+                <div class="team-desc">Lead Strategist. Experienced in product and growth.</div>
+                <div class="team-name">Alice Smithwest</div>
+            </div>
+        </div> 
+
+        <div class="team-wrap">
+            <div class="team-card xlarge" style="background-image:url('https://i.pinimg.com/1200x/22/7f/97/227f97d9387134080b9348cea8f7c5ad.jpg')"></div>
+            <div class="team-meta xlarge">
+                <div class="team-desc">Design lead. Passionate about UX and visual storytelling.</div>
+                <div class="team-name">Lucy Umgallanga</div>
+            </div>
+        </div> 
+
+        <div class="team-wrap">
+            <div class="team-card large" style="background-image:url('https://i.pinimg.com/736x/4e/6a/e3/4e6ae3165366332958828e01ca327c81.jpg')"></div>
+            <div class="team-meta large">
+                <div class="team-desc">Engineering lead. Backend and architecture specialist.</div>
+                <div class="team-name">Alan Sapkomerin</div>
+            </div>
+        </div> 
+
+        <div class="team-wrap">
+            <div class="team-card medium" style="background-image:url('https://images.unsplash.com/photo-1545996124-1b6b7f1f193f?auto=format&fit=crop&w=600&q=60')"></div>
+            <div class="team-meta medium">
+                <div class="team-desc">Product manager. Focused on shipped outcomes.</div>
+                <div class="team-name">John Smith</div>
+            </div>
+        </div> 
+
+        <div class="team-wrap">
+            <div class="team-card xlarge" style="background-image:url('https://images.unsplash.com/photo-1546456073-6712f79251bb?auto=format&fit=crop&w=600&q=60')"></div>
+            <div class="team-meta xlarge">
+                <div class="team-desc">Operations lead. Keeps the team running smoothly.</div>
+                <div class="team-name">Thomas Doe</div>
+            </div>
+        </div> 
+    </div>
+</section>
+   
+ <footer>
+     
+     <div class="footer-top">
+        <div class="footer-column">
+            <h3> Company Information</h3>
+            <a href="#">About us</a>
+            <a href="#">Company overview</a>
+            <a href="#">Why work with us</a>
+            <a href="#">Research</a>
+            <a href="#">Careers</a>
+        </div>
+     
+        <div class="footer-column">
+         <h3>News and Events</h3>
+         <a href="#">Events calendar</a>
+         <a href="#">company blog</a>
+         <a href="#">Newsroom</a>
+         <a href="#">Webinars</a>
+        </div>
+
+
+        <div class="footer-column">
+            <h3>Extra information</h3>
+            <a href="#">Developers</a>
+            <a href="#">Training</a>
+            <a href="#">Community</a>
+            <a href="#">Documentation</a>
+        </div>
+   
+    </div>
+     
+    <div class="newsletter">
+        <div class="newsletter-left">
+          <span class="newsletter-icon">✉</span>
+          <p>Sign up for Hot Beans Web</p>
+        </div>
+    </div>
+
+
+    <div class="footer-bottom">
+        <p>Follow Hot Beans Web</p>
+        <div class="social-icons">
+         <span>𝕏</span>
+         <span>𝐟</span>
+         <span>✉</span>
+        </div>
+    </div>
+
+
+</footer>
+
+
+</body>
+</html>
