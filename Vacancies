@@ -10,13 +10,21 @@ html, body {
 }
 
 
-.navbar{
-    overflow: hidden;
-    background-color: #093133;
+.navbar{ 
+    position:absolute; 
+    top:0; 
+    left: 0;
+    width: 100%;
+    display: flex; 
+    flex-wrap: wrap; 
+    background-color: rgba(9,49,51,0.8);
+    padding: 0 20px;
+    z-index: 20; 
+   
 }
 
 
-.navbar a {
+.navbar a{
  float: left;
  font-size: 16px;
  color:white;
@@ -44,25 +52,21 @@ html, body {
 }
 
 
-.navbar a, .dropdown .dropbtn {
-    transition: background-color 0.15s ease, border-radius 0.12s ease;
-    border-radius: 6px;
-}
-
 .navbar a:hover,
 .dropdown:hover .dropbtn {
     background-color:#17adb3;
-    border-radius: 8px;
 }
 
 
 .dropdown-content {
  display:none;
  position: absolute;
+ top: 100%;
+ left: 0;
  background-color: #043b3d;
  min-width: 160px;
  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
- z-index: 1;
+ z-index: 30;
 }
 
 
@@ -84,6 +88,262 @@ html, body {
  display: block;
 }
 
+.hero { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    min-height: 80vh;
+    background: url('https://t3.ftcdn.net/jpg/05/26/21/24/360_F_526212418_6qL9HVoCUgnizGZfuJ4Uc63i3ccnHgy1.jpg');
+    background-size: cover; 
+    position: relative;
+    margin-top: 0px; 
+    z-index: 1;
+}
+
+.hero::before { 
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 0;
+}
+
+.hero-text {
+    padding: 60px; 
+    position: relative; 
+    z-index: 1;
+} 
+
+.hero-text h1 { 
+    font-size: 3rem; 
+    color:#093133; 
+
+}
+
+.hero-text p {
+    font-size: 1.1rem; 
+    line-height: 1.6; 
+    color: #cbd5f5;
+}
+
+.hero-accent { 
+    background: linear-gradient(135deg, #093133, #043b3d); 
+    display: flex; 
+    align-items: center;  
+    justify-content: center; 
+    position: relative; 
+    z-index: 1; 
+}
+
+.hero-accent h2 { 
+    transform: rotate(-90deg); 
+    font-size: 3rem; 
+    color: White;  
+    letter-spacing: 6px;
+} 
+
+.filters{ 
+   display: flex;
+   justify-content: center;
+   align-items:center; 
+   gap: 15px;
+   flex-wrap: wrap; 
+   
+   max-width: wrap; 
+   margin: 40px auto; 
+   padding: 25px 30px; 
+
+   background: linear-gradient(135deg,#17adb3, #043b3d); 
+   border-radius: 40px; 
+
+   box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+} 
+
+#searchInput {
+ padding: 14px 22px;
+ border-radius: 30px; 
+ outline: none; 
+font-size: 1rem;
+width: 250px; 
+border: 2px solid #093133; 
+background-color:#17adb3;
+color:#043b3d; 
+transition: all 0.3s ease; 
+ } 
+
+ #searchInput:focus {
+    border-color: #093133; 
+    box-shadow: 0 0 12px rgba(23,173,179,0.4); 
+    } 
+
+    .filters select { 
+        padding: 12px 20px; 
+        border-radius: 25px; 
+        border: 2px solid #093133; 
+        background-color: #a0f0f0; 
+        font-size: 1rem; 
+        outline: none; 
+        transition: all 0.3 ease; 
+        cursor: pointer; 
+        color:#093133; 
+        margin: 0 10px;
+    } 
+
+    .filters select:hover { 
+        border-color: #093133;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3); 
+    } 
+
+    .filters select:focus { 
+        border-color:#093133; 
+        box-shadow: 0 0 12px rgba(23,173,179,0.4); 
+        background-color: #b0f5f5;
+    }
+
+    .filters label { 
+        margin: 0 5px; 
+            font-weight: bold; 
+            color: #093133;
+        }
+    
+
+.jobs { 
+    padding: 20px; 
+    background:#093133;  
+} 
+
+.jobs h2 { 
+    text-align: center; 
+    font-size: 2.2rem; 
+    margin-bottom: 20px; 
+    color:#17adb3; 
+} 
+
+.job { 
+    display: grid; 
+    grid-template-columns: 88px 1fr;
+    margin-bottom: 30px; 
+    position: relative; 
+    opacity: 1; 
+    transition: opacity 0.5s, transform 0.3s, box-shadow 0.3s; 
+} 
+
+.job.hidden { 
+    opacity: 0; 
+    transform: translateY(20px); 
+    pointer-events: none;
+}
+
+.job::before { 
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(23, 173, 179, 0.15); /* lighter, semi-transparent */
+    z-index: 0;
+    border-radius: 12px;
+} 
+
+.job-box { 
+    background: #093133; /* deep navy for contrast */
+    border: 1px solid #17adb3; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    box-shadow: 0 0 25px rgba(23,173,179,0.2);
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s; 
+    position: relative; 
+    z-index: 1; 
+    color: #000; /* text color brighter for readability */
+}
+
+.job-content h3, 
+.job-content p, 
+.job-content ul, 
+.salary, 
+.exp-tag { 
+    color: #f0f5fa; 
+}
+
+.salary { 
+    background: rgba(23,173,179,0.25); 
+    border: 1px solid #17adb3; 
+    color: #093133;  
+}
+
+.exp-tag { 
+    background: #17adb3; 
+    color: #fff; 
+}
+
+
+.job-box:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 30px rgba(23,173,179,0.4); 
+} 
+
+.job-box img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+} 
+
+.job-content {
+    padding: 20px; 
+    border-left: 4px solid #17adb3
+}
+
+.job-content h3 { 
+    margin:  0;
+} 
+
+.salary { 
+    display: inline-block; 
+    margin: 10px 0 5px 0; 
+    padding: 6px 12px;
+    background: rgba(56,189,248,0.15); 
+    border: 1px solid #17adb3; 
+    color:#093133;  
+    border-radius: 20px; 
+    font-weight: bold;
+    transition: transform 0.3s, background 0.3s; 
+}
+
+.salary:hover { 
+    transform: scale(1.1);
+    background: rgba(56,189,248,0.3);
+} 
+
+.exp-tag { 
+    display: inline-block; 
+    margin-left: 10px; 
+    padding: 4px 12px;
+    background: #17adb3; 
+    color: #fff; 
+    border-radius: 15px; 
+    font-size: 0.8rem; 
+    font-weight: bold;
+}
+
+.job-content ul { 
+    padding-left: 18px; 
+    color: #cbd5f5; 
+} 
+
+.apply { 
+    display: inline-block; 
+    margin-top: 15px; 
+    padding:10px 20px; 
+    background: #17adb3; 
+    color: #093133;
+    text-decoration: none; 
+    border-radius: 25px; 
+    font-weight: bold; 
+    transition: background 0.3s;  
+} 
+
+.apply:hover { 
+    background: #1cb4bc; 
+}
 
 footer {
     background: #000;
@@ -119,11 +379,10 @@ footer {
 
 .footer-column a {
  display: block;
- color: #ddd;
+ color: #043b3d;
  text-decoration: none;
  margin: 8px 0;
  font-size: 15px;
- transition: color 0.15s ease;
 }
 
 
@@ -158,10 +417,9 @@ footer {
 
 .subscribe-btn {
  background: #093133;
- color: #fff;
- padding: 12px 18px;
+ color: black;
+ padding: 12px 30px;
  border: none;
- border-radius: 6px;
  font-size: 16px;
  cursor: pointer;
 }
@@ -169,28 +427,12 @@ footer {
 
 .subscribe-btn:hover {
     background: #baff8b;
-    color: #000;
-}
-
-.newsletter-form {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.newsletter-input {
-  padding: 10px 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  min-width: 220px;
 }
 
 
 .footer-bottom {
     text-align: center;
-    margin-top: 20px;
-    padding-top: 12px;
+    margin-top: 20;
 }
 
 
@@ -206,33 +448,28 @@ footer {
     color:white;
 }
 
-/* Footer improvements: spacing, responsiveness */
-.footer-top {
-  gap: 20px;
-  align-items: flex-start;
-}
 
-@media (max-width: 800px) {
-  .footer-top {
-    flex-direction: column;
-    gap: 20px;
-    padding: 0 16px;
-  }
-  .footer-column {
-    width: 100%;
-  }
-  .newsletter {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 0 16px;
-  }
-  .social-icons {
-    margin-top: 8px;
-  }
-}
+ @media (max-width: 900px) {
+     .hero { 
+        grid-template-columns: 1fr; 
+     }
+        .hero-accent h2 { 
+            transform: none; 
+            margin-top: 30px;
+        } 
+    } 
 
-body {
+  @media (max-width: 600px) {
+     .job { 
+        grid-template-columns: 60px 1fr; 
+     }
+    .job-icon { 
+        width: 60%; 
+        height: 60px; 
+    font-size: 20px;
+    } 
+
+    body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -244,24 +481,190 @@ body {
  
     <div class="navbar">
    
-        <a href=file:///C:/Users/ridal/OneDrive/Documents/Hot%20Beans%20Web.html>Home</a>
+        <a href=Hot%20Beans%20Web.html>Home</a>
     <div class="dropdown">
      <button class="dropbtn">About us
         <i class="fa fa-caret-down"></i>
      </button>
      <div class="dropdown-content">
-      <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
-      <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
+      <a href=Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
+      <a href=Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
       <a href="">History</a>
      </div>
     </div>
-    <a href=file:///C:/Users/ridal/OneDrive/Documents/meet%20our%20team.html>Meet our team</a>
-    <a href=file:///C:/Users/ridal/OneDrive/Documents/vancancies%20.html>Vacancies</a>
-    <a href=file:///C:/Users/ridal/OneDrive/Documents/application.html>Application form</a>
-     <a href=file:///C:/Users/ridal/OneDrive/Documents/Contact%20us%20.html>Courses</a>
+    <a href=Hot%20beans%20web-Meet%20our%20team.html>Meet our team</a>
+    <a href=Hot%20Beans%20Web-Vacancies.html>Vacancies</a>
+    <a href=Hot%20Beans%20Web-Application.html>Application form</a>
+     <a href=Hot%20beans%20web-Courses.html>Courses</a>
  </div>
+    
+ <section class="hero"> 
+     <div class="hero-text">
+            <h1>Vacancies</h1> 
+            <p>Join our dynamic team at Hot Beans Web! We're looking for passionate individuals to fill the following positions:</p> 
+            </div>
+        <div class="hero-accent"> 
+            <h2>Careers</h2> 
+            </div> 
+         </section> 
+        <div class="filters"> 
+            <input type="text" id="searchInput" placeholder="Search by job title...">
+            <label for="expFilter">Experience:</label> 
+            <select id="expFilter"> 
+              <option value="all">All</option>
+              <option value="junior">Junior</option>
+              <option value="mid">Mid</option> 
+              <option value="senior">Senior</option>
+            </select>  
+
+            <label for="locFilter">Location:</label> 
+            <select id="locFilter"> 
+               <option value="all">All</option>
+               <option value="remote">Remote</option>
+               <option value="onsite">On-site</option>
+                </select> 
+
+            <label for="salaryFilter">Salary:</label>  
+            <select id="salaryFilter"> 
+                <option value="all">All</option> 
+                <option value="default">Default</option> 
+                <option value="low">Low → High</option>    
+                <option value="high">High → Low</option> 
+                </select>
+        </div> 
+
+    <section class="jobs" id="jobslist"> 
+    <h2>Available Positions</h2> 
+
+    <div class="job" data-exp="junior" data-loc="remote" data-salary="26000"> 
+        <div class="job-icon">JR</div> 
+        <div class="job-box"> 
+            <div class="job-content"> 
+                <h3>Junior Web Developer <span class="exp-tag">Junior</span></h3>
+                <div class="salary">£22,000 - £30,000</div> 
+                <p><strong>Location:</strong> Remote</p> 
+                <ul> 
+                    <li>HTML, CSS, JavaScript basics</li>
+                    <li>Mentorship available</li> 
+                </ul>
+                <a href="#" class="apply">Apply Now</a> 
+            </div>
+        </div>
+    </div> 
+
+    <div class="job" data-exp="mid" data-loc="onsite" data-salary="42000">
+        <div class="job-icon">FE</div> 
+        <div class="job-box">
+            <div class="job-content"> 
+                <h3>Front-End Developer <span class="exp-tag">Mid-Level</span></h3>
+                <div class="salary">£35,000 - £45,000</div> 
+                <p><strong>Location:</strong> On-site</p> 
+                <ul> 
+                    <li>HTML, CSS, JavaScript advanced</li>
+                    <li>Collaborate with designers</li> 
+                </ul>
+                <a href="#" class="apply">Apply Now</a> 
+            </div>
+        </div>
+    </div> 
+
+    <div class="job" data-exp="senior" data-loc="remote" data-salary="55000">
+        <div class="job-icon">FS</div> 
+        <div class="job-box">
+            <div class="job-content"> 
+                <h3>Full Stack Developer <span class="exp-tag">Senior</span></h3>
+                <div class="salary">£45,000 - £65,000</div> 
+                <p><strong>Location:</strong> Remote</p> 
+                <ul> 
+                    <li>Front-end and back-end systems</li> 
+                    <li>5+ years experience</li>
+                </ul>
+                <a href="#" class="apply">Apply Now</a> 
+            </div>
+        </div> 
+    </div>
    
- <footer>
+    <div class="job" data-exp="junior" data-loc="onsite" data-salary="28000">
+        <div class="job-icon">WD</div> 
+        <div class="job-box">
+            <div class="job-content"> 
+                <h3>Web Designer <span class="exp-tag">Junior</span></h3>
+                <div class="salary">£24,000 - £30,000</div> 
+                <p><strong>Location:</strong> On-site</p> 
+                <ul> 
+                    <li>HTML/CSS design</li>  
+                    <li>Basic JavaScript interactivity</li> 
+                </ul>
+                <a href="#" class="apply">Apply Now</a> 
+            </div>
+        </div> 
+    </div>
+
+    <div class="job" data-exp="mid" data-loc="remote" data-salary="48000">
+        <div class="job-icon">BE</div> 
+        <div class="job-box">
+            <div class="job-content"> 
+                <h3>Backend Developer <span class="exp-tag">Mid-Level</span></h3>
+                <div class="salary">£40,000 - £50,000</div> 
+                <p><strong>Location:</strong> Remote</p> 
+                <ul> 
+                    <li>Node.js / Python development</li> 
+                    <li>Database management</li>
+                </ul>
+                <a href="#" class="apply">Apply Now</a> 
+            </div>
+        </div> 
+    </div>
+
+    <div class="job" data-exp="senior" data-loc="onsite" data-salary="62000">
+        <div class="job-icon">DE</div> 
+        <div class="job-box">
+            <div class="job-content"> 
+                <h3>Development Engineer <span class="exp-tag">Senior</span></h3>
+                <div class="salary">£55,000 - £70,000</div> 
+                <p><strong>Location:</strong> On-site</p> 
+                <ul> 
+                    <li>Cloud development</li> 
+                    <li>Server and infrastructure management</li>
+                </ul>
+                <a href="#" class="apply">Apply Now</a> 
+            </div>
+        </div> 
+    </div>
+
+    <div class="job" data-exp="mid" data-loc="remote" data-salary="45000">
+        <div class="job-icon">QA</div> 
+        <div class="job-box">
+            <div class="job-content"> 
+                <h3>QA Tester <span class="exp-tag">Mid-Level</span></h3>
+                <div class="salary">£40,000 - £50,000</div> 
+                <p><strong>Location:</strong> Remote</p> 
+                <ul> 
+                    <li>Automated and manual testing</li> 
+                    <li>Bug reporting and tracking</li>
+                </ul>
+                <a href="#" class="apply">Apply Now</a> 
+            </div>
+        </div> 
+    </div>
+
+    <div class="job" data-exp="junior" data-loc="remote" data-salary="27000">
+        <div class="job-icon">UI</div> 
+        <div class="job-box">
+            <div class="job-content"> 
+                <h3>UI Designer <span class="exp-tag">Junior</span></h3>
+                <div class="salary">£23,000 - £28,000</div> 
+                <p><strong>Location:</strong> Remote</p> 
+                <ul> 
+                    <li>Wireframing and prototyping</li> 
+                    <li>Collaborate with front-end teams</li>
+                </ul>
+                <a href="#" class="apply">Apply Now</a> 
+            </div>
+        </div> 
+    </div>
+</section>
+    <footer>
      
      <div class="footer-top">
         <div class="footer-column">
@@ -297,12 +700,6 @@ body {
           <span class="newsletter-icon">✉</span>
           <p>Sign up for Hot Beans Web</p>
         </div>
-        <div class="newsletter-right">
-          <form class="newsletter-form" action="#" method="post" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-            <input type="email" name="email" placeholder="Enter your email" required class="newsletter-input">
-            <button class="subscribe-btn" type="submit">Subscribe</button>
-          </form>
-        </div>
     </div>
 
 
@@ -318,6 +715,62 @@ body {
 
 </footer>
 
+<script>
+    
+const expFilter = document.getElementById('expFilter'); 
+const locFilter = document.getElementById('locFilter'); 
+const salarySort = document.getElementById('salaryFilter'); 
+const searchInput = document.getElementById('searchInput'); 
+const jobs = Array.from(document.querySelectorAll('.job'));  
 
-</body>
-</html
+function filterJobs() { 
+    const exp = expFilter.value.toLowerCase();
+    const loc = locFilter.value.toLowerCase(); 
+    const search = searchInput.value.toLowerCase(); 
+
+    jobs.forEach(job => { 
+        const jobExp = job.dataset.exp.toLowerCase(); 
+        const jobLoc = job.dataset.loc.toLowerCase(); 
+        const jobTitle = job.querySelector('h3').textContent.toLowerCase(); 
+
+        let expMatch = (exp === 'all' || jobExp === exp); 
+        let locMatch = (loc === 'all' || jobLoc === loc.replace('-', '')); 
+        let searchMatch = jobTitle.includes(search); 
+
+        if (expMatch && locMatch && searchMatch) { 
+            job.classList.remove('hidden'); 
+        } else { 
+            job.classList.add('hidden'); 
+        } 
+    });
+} 
+
+function sortJobs() { 
+    const val = salarySort.value; 
+    const jobsList = document.getElementById('jobslist'); 
+
+    let sortedJobs = jobs.slice(); 
+
+    if (val === 'low') { 
+        sortedJobs.sort((a,b) => parseInt(a.dataset.salary) - parseInt(b.dataset.salary)); 
+    } else if (val === 'high') { 
+        sortedJobs.sort((a,b) => parseInt(b.dataset.salary) - parseInt(a.dataset.salary)); 
+    } 
+
+    // Append in sorted order
+    sortedJobs.forEach(job => jobsList.appendChild(job));
+}
+
+// Event listeners
+expFilter.addEventListener('change', filterJobs);
+locFilter.addEventListener('change', filterJobs);
+searchInput.addEventListener('input', filterJobs);
+salarySort.addEventListener('change', () => { 
+    sortJobs(); 
+    filterJobs(); // Keep filter applied after sorting
+});
+</script>
+
+
+</body> 
+</html>
