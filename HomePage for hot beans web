@@ -17,17 +17,17 @@ html, body {
     position: relative;
     z-index: 1000;
     display: flex;
-    gap: 10px; /* small-medium spacing */
+    gap: 10px; 
     align-items: center;
-    padding: 10px 14px; /* reduced padding for compact look */
+    padding: 10px 14px; 
 }
 
 
 .navbar a {
- font-size: 15px; /* slightly smaller */
+ font-size: 15px; 
  color:white;
  text-decoration:none;
- padding: 10px 12px; /* small-medium padding */
+ padding: 10px 12px; 
  display: inline-block;
 }
 
@@ -110,7 +110,7 @@ html, body {
  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
  url("https://i.pinimg.com/1200x/56/8b/09/568b09fee4a345af7af8d5de29fbda9b.jpg");
  height: 55vh;
- background-color: #2b2b2b; /* fallback if external image doesn't load */
+ background-color: #2b2b2b; 
  min-height: 220px;
  background-position: center; 
  background-repeat: no-repeat;
@@ -155,7 +155,7 @@ box-shadow: 0 8px 20px rgba(0,0,0,0.3);
  background-color: #14a6ab; 
  text-align: center; 
  cursor: pointer; 
- border-radius: 14px; /* rounded */
+ border-radius: 14px; 
  transition: background-color 0.18s ease, transform 0.12s ease, box-shadow 0.12s ease;
  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
  }
@@ -176,12 +176,12 @@ box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 
 .under-hero {
     max-width: 1000px;
-    margin: 20px auto; /* centered with whitespace at sides */
-    padding: 0 32px; /* side padding for breathing room */
+    margin: 20px auto; 
+    padding: 0 32px; 
     display: flex;
     align-items: center;
-    justify-content: center; /* center image + text box */
-    gap: 24px; /* spacing between image and text box */
+    justify-content: center; 
+    gap: 24px; 
     box-sizing: border-box;
 }
 .under-hero img {
@@ -360,7 +360,7 @@ footer {
     color:white;
 }
 
-/* Footer improvements: spacing, responsiveness */
+
 .footer-top {
   gap: 20px;
   align-items: flex-start;
@@ -395,25 +395,25 @@ body {
 </style>
  </head>
  
- <body style="background-color:white;">
+ <body style="background-color:#021b1c;">
  
 
     <div class="navbar">
    
-    <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web.html>Home</a>
+    <a href=Hot%20Beans%20Web.html>Home</a>
     <div class="dropdown">
      <button class="dropbtn" aria-expanded="false" id="aboutBtn">About us</button>
      <div class="dropdown-content">
-	 <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-About%20us%20.html>About us</a>
-    <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
-    <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
+	 <a href=Hot%20Beans%20Web-About%20us%20.html>About us</a>
+    <a href=Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
+    <a href=Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
       <a href="">History</a>
      </div>
     </div>
-    <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20beans%20web-Meet%20our%20team.html>Meet our team</a>
-    <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-Vacancies.html>Vacancies</a>
-    <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-Application.html>Application form</a>
-     <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20beans%20web-Courses.html>Courses</a>
+    <a href=Hot%20beans%20web-Meet%20our%20team.html>Meet our team</a>
+    <a href=Hot%20Beans%20Web-Vacancies.html>Vacancies</a>
+    <a href=Hot%20Beans%20Web-Application.html>Application form</a>
+     <a href=Hot%20beans%20web-Courses.html>Courses</a>
  </div>
    
     <div class="hero-image"> 
