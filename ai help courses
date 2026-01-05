@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hot Beans Web</title>
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Times New Roman;
+}
+
+/* Navbar */
+.navbar {
+    overflow: visible; 
+    background-color: #093133;
+    position: relative; 
+    z-index: 1000; 
+    gap: 10px; 
+    display: flex;
+    align-items: center; 
+    padding: 10px 14px;
+}
+
+.navbar a, .dropdown .dropbtn {
+    font-size: 16px; 
+    color: white; 
+    text-align: center;
+    padding: 10px 12px; 
+    text-decoration: none; 
+    display: inline-block; 
+    border-radius: 6px; 
+    transition: background-color 0.18s ease, border-radius 0.12s ease;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Hover effect */
+.navbar a:hover, .dropdown:hover .dropbtn { 
+    background-color: #17adb3;
+    border-radius: 8px;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Remove the arrow */
+.dropbtn::after {
+    content: none;
+}
+
+/* Dropdown content */
+.dropdown-content { 
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    background-color: #043b3d; 
+    min-width: 160px; 
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1001;
+}
+
+/* Dropdown links */
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+/* Hover effect for dropdown links */
+.dropdown-content a:hover { 
+    background-color: #17adb3;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Hero section */
+.hero { 
+    background: linear-gradient(rgba(9,49,51,0.7), rgba(9,49,51,0.7)),
+        url('https://www.citystgeorges.ac.uk/__data/assets/image/0010/685342/varieties/breakpoint-max.jpg');
+    background-size: cover; 
+    background-position: center; 
+    color: white; 
+    text-align: center; 
+    padding: 100px 20px; 
+    margin-top: 48px;
+} 
+
+.hero h1 { 
+    font-size: 48px; 
+    margin-bottom: 15px; 
+} 
+
+.hero p { 
+    font-size: 20px; 
+    margin-bottom: 15px; 
+} 
+
+.hero button { 
+    background-color: #baff8b;  
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.hero button:hover {
+    background-color: #93e05c;
+}
+
+/* Footer */
+footer {
+    background: #000;
+    color: white;
+    padding: 40px 0;
+    margin-top: auto;
+    font-family: Arial, sans-serif;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: auto;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #333;
+}
+
+.footer-column {
+    width: 30%;
+}
+
+.footer-column h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+}
+
+.footer-column a {
+    display: block;
+    color: #043b3d;
+    text-decoration: none;
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+.newsletter {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.newsletter-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.newsletter-icon{
+    font-size: 32px;
+    border: 2px solid #093133;
+    padding: 8px;
+    color: #093133;
+}
+
+.subscribe-btn {
+    background: #093133;
+    color: black;
+    padding: 12px 30px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.subscribe-btn:hover {
+    background: #baff8b;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-icons span {
+    font-size: 24px;
+    margin: 0 10px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.social-icons span:hover {
+    color: white;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+</style>
+</head>
+
+<body style="background-color:white;">
+
+<div class="navbar">
+    <a href="Hot%20Beans%20Web.html">Home</a>
+    
+    <div class="dropdown">
+        <button class="dropbtn">About us</button>
+        <div class="dropdown-content">
+            <a href="Hot%20Beans%20Web-Contact%20us%20%20.html">Contact us</a>
+            <a href="Hot%20Beans%20Web-Our%20mission%20.html">Our mission</a>
+            <a href="">History</a>
+        </div>
+    </div>
+    
+    <a href="Hot%20beans%20web-Meet%20our%20team.html">Meet our team</a>
+    <a href="Hot%20Beans%20Web-Vacancies.html">Vacancies</a>
+    <a href="Hot%20Beans%20Web-Application.html">Application form</a>
+    <a href="Hot%20beans%20web-Courses.html">Courses</a>
+</div>
+
+<section class="hero"> 
+    <h1>Welcome to Hot Beans Web</h1> 
+    <p>Building to the next generation of web developers</p> 
+    <button>View our courses</button> 
+</section>
+
+<footer>
+    <div class="footer-top">
+        <div class="footer-column">
+            <h3>Company Information</h3>
+            <a href="#">About us</a>
+            <a href="#">Company overview</a>
+            <a href="#">Why work with us</a>
+            <a href="#">Research</a>
+            <a href="#">Careers</a>
+        </div>
+        <div class="footer-column">
+            <h3>News and Events</h3>
+            <a href="#">Events calendar</a>
+            <a href="#">Company blog</a>
+            <a href="#">Newsroom</a>
+            <a href="#">Webinars</a>
+        </div>
+        <div class="footer-column">
+            <h3>Extra information</h3>
+            <a href="#">Developers</a>
+            <a href="#">Training</a>
+            <a href="#">Community</a>
+            <a href="#">Documentation</a>
+        </div>
+    </div>
+    
+    <div class="newsletter">
+        <div class="newsletter-left">
+            <span class="newsletter-icon">✉</span>
+            <p>Sign up for Hot Beans Web</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>Follow Hot Beans Web</p>
+        <div class="social-icons">
+            <span>𝕏</span>
+            <span>𝐟</span>
+            <span>✉</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
