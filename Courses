@@ -22,60 +22,30 @@ padding: 10px 14px;
 }
 
 
-.navbar a, .dropdown .dropbtn {
+.navbar a {
  font-size:16px; 
  color: white; 
- text-align: center;
  padding: 10px 12px; 
  text-decoration:none; 
- display: inline-block; 
  border-radius: 6px; 
  transition: background-color 0.18s ease, border-radius 0.12s ease;
 }
 
-.navbar a:hover, 
-.dropdown:hover .dropbtn { 
+.navbar a:hover { 
  background-color: #17adb3;
  border-radius: 8px;
- 
 } 
 
 .dropdown {
 position: relative;
-display: inline-block;
 }
 
-.dropdown .dropbtn{ 
- background-color:inherit; 
- border:none; 
- font-family: inherit; 
- margin:0; 
- cursor: pointer; 
- } 
- 
+
  .dropbtn::after{ 
-  content:'▾'; 
-  display:inline-block; 
-  margin-left: 6px; 
-  font-size: 0.9rem; 
-  transition: transform 0.18s ease;
-  } 
-  
-  .dropbtn[aria-expanded="true"]::after { 
-   transform: rotate(180deg); 
-   } 
-   
-   .dropbtna, .dropdown .dropbtn { 
-    transition: background-color 0.15s ease, border-radius 0.12s ease;
-	border-radius: 6px;
-	} 
-	
-	.navbar a:hover, 
-	.dropdown:hover .dropbtn { 
-	background-color: #17adb3; 
-	border-radius: 8px;
-	} 
-	
+ content: " ▾";
+ font-size: 0.9em;
+ }
+  	
 .dropdown-content { 
  display: none; 
  position: absolute; 
@@ -88,15 +58,17 @@ display: inline-block;
  } 
  
 .dropdown-content a {
- color: white;
  padding: 12px 16px;
- text-decoration: none;
  display: block;
- text-align: left;
+ color: white;
 }
 
 .dropdown-content a:hover{ 
  background-color: #17adb3;
+ }
+ 
+ .dropdown:hover .dropdown-content  {
+    display: block;
  }
  
 
@@ -121,15 +93,76 @@ display: inline-block;
   margin-bottom: 15px; 
 } 
 
-.hero { 
- margin-top: 48px;
- }
-  
 .hero button { 
  background-color: #baff8b;  
  color: black;
- } 
+border: none; 
+ padding: 12px 20px; 
+ font-size: 16px; 
+border-radius: 8px; 
+cursor: pointer;
+ }  
+
+ .hero button:hover { 
+    background-color: #a5f3a5;
+ }
  
+.courses-wrapper { 
+    display: flex; 
+    gap: 20px; 
+    max-width: 1200px;
+    margin: 50px auto; 
+    flex-wrap: wrap; 
+    justify-content: center;
+} 
+
+.course-card { 
+    border-radius: 12px; 
+    width: 350px; 
+    overflow: hidden; 
+    transition: transform 0.3s ease,box-shadow 0.3s ease; 
+    display: flex; 
+    flex-direction: column;
+    background: linear-gradient(145deg, #093133); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+} 
+
+.course-card img { 
+    width: 100%;
+    height: 200px; 
+    object-fit: cover;
+} 
+
+.course-content { 
+    padding: 20px; 
+    flex:1; 
+    display:flex; 
+    flex-direction: column;
+} 
+
+.course-content h3 { 
+    margin: 0 0 10px 0; 
+    font-size: 20px; 
+    color: #17adb3; 
+} 
+
+.course-content p{ 
+    font-size:14px; 
+    color: #cbe8cb; 
+    margin: 0 0 15px 0; 
+    flex: 1;
+} 
+
+.course-content span{ 
+    font-weight: bold; 
+    color: #14635b;
+} 
+
+.course-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
 footer {
     background: #000;
     color: white;
@@ -137,6 +170,9 @@ footer {
     margin-top: auto;
     font-family: Arial, sans-serif;
 }
+
+
+.navbar + .hero-image { margin-top: 0; }
 
 
 .footer-top {
@@ -164,10 +200,11 @@ footer {
 
 .footer-column a {
  display: block;
- color: #043b3d;
+ color: #093133;
  text-decoration: none;
  margin: 8px 0;
  font-size: 15px;
+ transition: color 0.15s ease;
 }
 
 
@@ -202,9 +239,10 @@ footer {
 
 .subscribe-btn {
  background: #093133;
- color: black;
- padding: 12px 30px;
+ color: #fff;
+ padding: 12px 18px;
  border: none;
+ border-radius: 6px;
  font-size: 16px;
  cursor: pointer;
 }
@@ -212,12 +250,28 @@ footer {
 
 .subscribe-btn:hover {
     background: #baff8b;
+    color: #000;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.newsletter-input {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  min-width: 220px;
 }
 
 
 .footer-bottom {
     text-align: center;
-    margin-top: 20;
+    margin-top: 20px;
+    padding-top: 12px;
 }
 
 
@@ -234,6 +288,33 @@ footer {
 }
 
 
+.footer-top {
+  gap: 20px;
+  align-items: flex-start;
+}
+
+@media (max-width: 800px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 16px;
+  }
+  .footer-column {
+    width: 100%;
+  }
+  .newsletter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 0 16px;
+  }
+  .social-icons {
+    margin-top: 8px;
+  }
+} 
+
+
+
 body {
     display: flex;
     flex-direction: column;
@@ -242,15 +323,14 @@ body {
 </style>
  </head>
  
- <body style="background-color:white;">
+ <body style="background-color:#043b3d;">
  
     <div class="navbar">
    
         <a href=Hot%20Beans%20Web.html>Home</a>
     <div class="dropdown">
-     <button class="dropbtn" id="aboutBtn"="false">About us</button>
-        <div class="dropdown-content">
-          
+     <a href="Hot%20Beans%20Web-About%20us%20.html">About us</a>
+          <div class="dropdown-content">
       <a href=Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
       <a href=Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
       <a href="">History</a>
@@ -266,8 +346,64 @@ body {
     <h1>Welcome to Hot Beans Web</h1> 
 	<p>Building to the next generation of web developers</p> 
 	 <button>view our courses</button> 
-	 </section>
- <footer>
+	 </section> 
+
+<div class="courses-wrapper"> 
+ <div class="course-card"> 
+    <a href="https://www.udemy.com/course/the-complete-web-development-bootcamp/?couponCode=CP250105G2">
+  <img src="https://img-c.udemycdn.com/course/750x422/1565838_e54e_18.jpg" alt="HTML & CSS Course">
+    </a>
+  <div class="course-content"> 
+    <h3> Build Responsive Real-World Websites with HTML and CSS</h3> 
+     <p>Learn modern HTML5, CSS3 and web design by building a stunning website for your portfolio</p>
+   </div>
+ </div>
+
+
+
+  <div class="course-card"> 
+    <a href="https://www.w3schools.com/">
+  <img src="https://rafarjonilla.com/wp-content/uploads/w3schools.png.webp" alt="HTML & CSS Course">
+    </a>
+   <div class="course-content"> 
+    <h3> Build Responsive Real-World Websites with HTML and CSS</h3> 
+     <p>Learn modern HTML5, CSS3 and web design by building a stunning website for your portfolio</p>
+   </div>
+ </div>
+
+ 
+  <div class="course-card"> 
+    <a href="https://www.codecademy.com/?g_network=g&g_productchannel=&g_adid=528849219280&g_locinterest=&g_keyword=codecademy&g_acctid=243-039-7011&g_adtype=&g_keywordid=kwd-41065460761&g_ifcreative=&g_campaign=account&g_locphysical=9045965&g_adgroupid=70492864474&g_productid=&g_source={sourceid}&g_merchantid=&g_placement=&g_partition=&g_campaignid=1726903838&g_ifproduct=&utm_id=t_kwd-41065460761:ag_70492864474:cp_1726903838:n_g:d_c&utm_source=google&utm_medium=paid-search&utm_term=codecademy&utm_campaign=INTL_Brand_Exact&utm_content=528849219280&g_adtype=search&g_acctid=243-039-7011&gad_source=1&gad_campaignid=1726903838&gbraid=0AAAAAon8KZHXp_kxRuDKuceosFzY6Fr6F&gclid=CjwKCAiA3-3KBhBiEiwA2x7FdO0cgB1fW1EiJhf4oZ5a_wKVb827oMSDJjvTKMCgggsFbVC0KMVJhBoCa5wQAvD_BwE">
+  <img src="https://i.pcmag.com/imagery/reviews/05XBKmNFYeHCMIn726Nohqb-10..v1627594235.png" alt="HTML & CSS Course">
+    </a>
+  <div class="course-content"> 
+    <h3> Build Responsive Real-World Websites with HTML and CSS</h3> 
+     <p>Learn modern HTML5, CSS3 and web design by building a stunning website for your portfolio</p>
+   </div>
+ </div> 
+
+ <div class="course-card"> 
+    <a href="https://www.sololearn.com/en/">
+  <img src="https://mcwt.org/wp-content/uploads/2024/03/Coding-resources-Sololearn.jpg" alt="HTML & CSS Course"> 
+  </a>
+   <div class="course-content"> 
+    <h3> Build Responsive Real-World Websites with HTML and CSS</h3> 
+     <p>Learn modern HTML5, CSS3 and web design by building a stunning website for your portfolio</p>
+   </div>
+ </div> 
+
+ <div class="course-card"> 
+    <a href="https://www.udacity.com/?utm_source=paid-search&utm_medium=gsem-brand&utm_campaign=22898076404_individuals_campaigngtm&utm_term=udacity&utm_content=future50&utm_source=paid-search&utm_medium=gsem-brand&utm_campaign=22898076404_individuals_campaigngtm&utm_term=udacity&utm_content=future50&gad_source=1&gad_campaignid=22898076404&gbraid=0AAAAADmkdSQMbFsxLBXzSp1fyPydcLjSz&gclid=CjwKCAiA3-3KBhBiEiwA2x7FdBT5KrA6JuVIDZfo3UOT0LrEwVzK6PB-xCbJiKTPjOC9gQ54H0FmsRoCIZEQAvD_BwE">
+  <img src="https://miro.medium.com/1*c0CdMMI9iCGeghAgO2cq5A.png" alt="HTML & CSS Course">
+    </a>
+  <div class="course-content"> 
+    <h3> Build Responsive Real-World Websites with HTML and CSS</h3> 
+     <p>Learn modern HTML5, CSS3 and web design by building a stunning website for your portfolio</p>
+   </div>
+ </div> 
+</div>
+
+     <footer>
      
      <div class="footer-top">
         <div class="footer-column">
@@ -318,41 +454,7 @@ body {
 
 </footer>
 
-<script>
-(function(){
-    const btn = document.getElementById('aboutBtn');
-    const menu = btn.nextElementSibling;
-    if(!btn || !menu) return;
 
-    function closeMenu() {
-        menu.classList.remove('show');
-        btn.setAttribute('aria-expanded', 'false');
-        menu.setAttribute('aria-hidden', 'true');
-    }
-    function openMenu() {
-        menu.classList.add('show');
-        btn.setAttribute('aria-expanded', 'true');
-        menu.setAttribute('aria-hidden', 'false');
-    }
-
-    btn.addEventListener('click', function(e){
-        e.stopPropagation();
-        if(menu.classList.contains('show')) closeMenu(); else openMenu();
-    });
-
-    btn.addEventListener('keydown', function(e){
-        if(e.key === 'Enter' || e.key === ' ' || e.code === 'Space'){
-            e.preventDefault();
-            if(menu.classList.contains('show')) closeMenu(); else openMenu();
-        }
-    });
-
-    document.addEventListener('click', closeMenu);
-    document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') closeMenu(); });
-
-    menu.setAttribute('aria-hidden','true');
-})();
-</script>
 
 </body>
 </html>
