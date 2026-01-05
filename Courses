@@ -11,63 +11,83 @@ html, body {
 
 
 .navbar{
-    overflow: hidden;
-    background-color: #093133;
-}
-
-
-.navbar a {
- float: left;
- font-size: 16px;
- color:white;
- text-align: center;
- padding: 14px 16px;
- text-decoration:none;
-}
-
-
-.dropdown {
- float: left;
- overflow: hidden;
-}
-
-
-.dropdown .dropbtn {
- font-size: 16px;
- border: none;
- outline: none;
- color: white;
- padding: 14px 16px;
- background-color: inherit;
- font-family: inherit;
- margin: 0;
+overflow: visible; 
+background-color: #093133;
+position:relative; 
+z-index:1000; 
+gap: 10px; 
+display:flex;
+align-items: center; 
+padding: 10px 14px;
 }
 
 
 .navbar a, .dropdown .dropbtn {
+ font-size:16px; 
+ color: white; 
+ text-align: center;
+ padding: 10px 12px; 
+ text-decoration:none; 
+ display: inline-block; 
+ border-radius: 6px; 
+ transition: background-color 0.18s ease, border-radius 0.12s ease;
+}
+
+.navbar a:hover, 
+.dropdown:hover .dropbtn { 
+ background-color: #17adb3;
+ border-radius: 8px;
+ 
+} 
+
+.dropdown {
+position: relative;
+display: inline-block;
+}
+
+.dropdown .dropbtn{ 
+ background-color:inherit; 
+ border:none; 
+ font-family: inherit; 
+ margin:0; 
+ cursor: pointer; 
+ } 
+ 
+ .dropbtn::after{ 
+  content:'▾'; 
+  display:inline-block; 
+  margin-left: 6px; 
+  font-size: 0.9rem; 
+  transition: transform 0.18s ease;
+  } 
+  
+  .dropbtn[aria-expanded="true"]::after { 
+   transform: rotate(180deg); 
+   } 
+   
+   .dropbtna, .dropdown .dropbtn { 
     transition: background-color 0.15s ease, border-radius 0.12s ease;
-    border-radius: 6px;
-}
-
-.navbar a:hover,
-.dropdown:hover .dropbtn {
-    background-color:#17adb3;
-    border-radius: 8px;
-}
-
-
-.dropdown-content {
- display:none;
- position: absolute;
- background-color: #043b3d;
- min-width: 160px;
- box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
- z-index: 1;
-}
-
-
+	border-radius: 6px;
+	} 
+	
+	.navbar a:hover, 
+	.dropdown:hover .dropbtn { 
+	background-color: #17adb3; 
+	border-radius: 8px;
+	} 
+	
+.dropdown-content { 
+ display: none; 
+ position: absolute; 
+ top:100%; 
+ left:0; 
+ background-color: #043b3d; 
+ min-width: 160px; 
+ box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+ z-index: 1001;
+ } 
+ 
 .dropdown-content a {
- float: none;
  color: white;
  padding: 12px 16px;
  text-decoration: none;
@@ -75,16 +95,41 @@ html, body {
  text-align: left;
 }
 
-
-.dropdown-content a:hover {
+.dropdown-content a:hover{ 
  background-color: #17adb3;
-}
+ }
  
-.dropdown:hover .dropdown-content {
- display: block;
-}
 
 
+.hero { 
+ background:linear-gradient(rgba(9,49,51,0.7), rgba(9,49,51,0.7)),
+  url('https://www.citystgeorges.ac.uk/__data/assets/image/0010/685342/varieties/breakpoint-max.jpg');
+  background-size: cover; 
+  background-position: center; 
+  color: white; 
+  text-align: center; 
+  padding: 100px 20px; 
+  } 
+  
+  .hero h1 { 
+   font-size: 48px; 
+   margin-bottom: 15px; 
+} 
+
+.hero p { 
+  font-size: 20px; 
+  margin-bottom: 15px; 
+} 
+
+.hero { 
+ margin-top: 48px;
+ }
+  
+.hero button { 
+ background-color: #baff8b;  
+ color: black;
+ } 
+ 
 footer {
     background: #000;
     color: white;
@@ -119,11 +164,10 @@ footer {
 
 .footer-column a {
  display: block;
- color: #ddd;
+ color: #043b3d;
  text-decoration: none;
  margin: 8px 0;
  font-size: 15px;
- transition: color 0.15s ease;
 }
 
 
@@ -158,10 +202,9 @@ footer {
 
 .subscribe-btn {
  background: #093133;
- color: #fff;
- padding: 12px 18px;
+ color: black;
+ padding: 12px 30px;
  border: none;
- border-radius: 6px;
  font-size: 16px;
  cursor: pointer;
 }
@@ -169,28 +212,12 @@ footer {
 
 .subscribe-btn:hover {
     background: #baff8b;
-    color: #000;
-}
-
-.newsletter-form {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.newsletter-input {
-  padding: 10px 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  min-width: 220px;
 }
 
 
 .footer-bottom {
     text-align: center;
-    margin-top: 20px;
-    padding-top: 12px;
+    margin-top: 20;
 }
 
 
@@ -206,31 +233,6 @@ footer {
     color:white;
 }
 
-/* Footer improvements: spacing, responsiveness */
-.footer-top {
-  gap: 20px;
-  align-items: flex-start;
-}
-
-@media (max-width: 800px) {
-  .footer-top {
-    flex-direction: column;
-    gap: 20px;
-    padding: 0 16px;
-  }
-  .footer-column {
-    width: 100%;
-  }
-  .newsletter {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 0 16px;
-  }
-  .social-icons {
-    margin-top: 8px;
-  }
-}
 
 body {
     display: flex;
@@ -244,23 +246,27 @@ body {
  
     <div class="navbar">
    
-        <a href=file:///C:/Users/ridal/OneDrive/Documents/Hot%20Beans%20Web.html>Home</a>
+        <a href=Hot%20Beans%20Web.html>Home</a>
     <div class="dropdown">
-     <button class="dropbtn">About us
-        <i class="fa fa-caret-down"></i>
-     </button>
-     <div class="dropdown-content">
-      <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
-      <a href=file://acsfile02/Students$/sirar010.304/Documents/Unit%206-Rida%20siraj/Assignment%202/Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
+     <button class="dropbtn" id="aboutBtn"="false">About us</button>
+        <div class="dropdown-content">
+          
+      <a href=Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
+      <a href=Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
       <a href="">History</a>
      </div>
     </div>
-    <a href=file:///C:/Users/ridal/OneDrive/Documents/meet%20our%20team.html>Meet our team</a>
-    <a href=file:///C:/Users/ridal/OneDrive/Documents/vancancies%20.html>Vacancies</a>
-    <a href=file:///C:/Users/ridal/OneDrive/Documents/application.html>Application form</a>
-     <a href=file:///C:/Users/ridal/OneDrive/Documents/Contact%20us%20.html>Courses</a>
+    <a href=Hot%20beans%20web-Meet%20our%20team.html>Meet our team</a>
+    <a href=Hot%20Beans%20Web-Vacancies.html>Vacancies</a>
+    <a href=Hot%20Beans%20Web-Application.html>Application form</a>
+     <a href=Hot%20beans%20web-Courses.html>Courses</a>
  </div>
    
+   <section class="hero"> 
+    <h1>Welcome to Hot Beans Web</h1> 
+	<p>Building to the next generation of web developers</p> 
+	 <button>view our courses</button> 
+	 </section>
  <footer>
      
      <div class="footer-top">
@@ -297,12 +303,6 @@ body {
           <span class="newsletter-icon">✉</span>
           <p>Sign up for Hot Beans Web</p>
         </div>
-        <div class="newsletter-right">
-          <form class="newsletter-form" action="#" method="post" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-            <input type="email" name="email" placeholder="Enter your email" required class="newsletter-input">
-            <button class="subscribe-btn" type="submit">Subscribe</button>
-          </form>
-        </div>
     </div>
 
 
@@ -318,6 +318,41 @@ body {
 
 </footer>
 
+<script>
+(function(){
+    const btn = document.getElementById('aboutBtn');
+    const menu = btn.nextElementSibling;
+    if(!btn || !menu) return;
+
+    function closeMenu() {
+        menu.classList.remove('show');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+    }
+    function openMenu() {
+        menu.classList.add('show');
+        btn.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+    }
+
+    btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(menu.classList.contains('show')) closeMenu(); else openMenu();
+    });
+
+    btn.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' ' || e.code === 'Space'){
+            e.preventDefault();
+            if(menu.classList.contains('show')) closeMenu(); else openMenu();
+        }
+    });
+
+    document.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') closeMenu(); });
+
+    menu.setAttribute('aria-hidden','true');
+})();
+</script>
 
 </body>
-</html
+</html>
