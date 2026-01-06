@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Hot Beans Web</title>
 <style> 
 
@@ -8,7 +9,9 @@ html, body {
     height: 100%;
     margin: 0;
     font-family: Times New Roman;
-}
+} 
+
+
 
 
 .navbar{
@@ -502,6 +505,14 @@ footer {
     z-index: 998;
 }
 
+#accessibility-menu { 
+    display:none; 
+    grid-template-columns: repeat(2, 1fr);
+} 
+
+#accessibility-menu.show-accessibility-menu { 
+    display: grid;
+}
 body {
     display: flex;
     flex-direction: column;
@@ -649,6 +660,7 @@ body {
 </footer>
 
 
+
 <div id="reading-guide"></div> 
 
 <button id="accessibility-btn" aria-label="Accessibility-Menu">
@@ -697,7 +709,7 @@ body {
 
 
      textSizeSlider.oninput = function() {
-     document.body.classList.remove("big-text");
+    
       document.body.style.fontSize = `${this.value}em`;
 
       };
