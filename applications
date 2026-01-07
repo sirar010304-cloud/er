@@ -2,6 +2,7 @@
 <html>
     <head>
     <title>Hot Beans Web</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <style>
 html, body {
     height: 100%;
@@ -358,6 +359,136 @@ footer {
     color:white;
 }
 
+#accessibility-btn{ 
+    position: fixed; 
+    bottom: 20px; 
+    left: 20px; 
+    background: none; 
+    border: none; 
+    padding: 0; 
+    cursor: pointer; 
+    z-index: 1002;
+}  
+
+#accessibility-btn img { 
+    width: 56px; 
+    height: 56px; 
+    border-radius: 50%; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+    transition: transform 0.2s ease;
+} 
+
+#accessibility-btn img:hover { 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+    transition: transform 0.2s ease;
+}
+
+#accessibility-btn img:hover { transform: scale(1.08); }
+
+#accessibility-menu { 
+    display: none; 
+    position: fixed; 
+    bottom: 80px;
+    left: 20px; 
+    width: 400px;
+    max-height: 90vh; 
+    background: #008080; 
+    border-radius: 30px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 15px;
+    gap: 10px; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    scrollbar-width: thin; 
+    scrollbar-color: #00bfa5 #004d4d;
+    z-index: 9999;
+} 
+
+#accessibility-menu::-webkit-scrollbar { 
+    width:6px; 
+} 
+
+#accessibility-menu::-webkit-scrollbar-track { background: #004d4d; border-radius: 30px; } 
+#accessibility-menu::-webkit-scrollbar-thumb { background-color: #00bfa5; border-radius: 30px; border:1px solid #004d4d; }
+
+
+#accessibility-menu button{ 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 8px;
+    background:white; 
+    cursor: pointer; 
+    border-radius: 10px; 
+    font-size: 12px; 
+    text-align: center; 
+    height: 74px;
+}
+
+#accessibility-menu button i { 
+    font-size: 20px; 
+    margin-bottom: 5px; 
+} 
+
+#accessibility-menu button:hover { 
+    background: #00bfa5; 
+    color:white;
+    border-color: #004d4d;
+}
+
+.reset { 
+    grid-column: span 2; 
+    background: #f5f5f5;
+} 
+
+.accessibility-slider { 
+    flex-direction: column; 
+} 
+
+.slider-with-icons {
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
+    margin-top: 5px; 
+    width:100%;
+}
+
+.high-contrast { background: black !important; color: yellow !important;}
+.big-text { font-size: 1.3em; } 
+.spaced-text { letter-spacing: 2px; }
+.no-animation * { animation: none !important; transition:none !important; }
+.dyslexia { font-family: Arial, verdana, sans-serif; } 
+.line-height{ line-height:2; } 
+
+#reading-guide { 
+    position:fixed; 
+    left: 0; 
+    width: 100%; 
+    height: 30px; 
+    background: rgba(0,95,204,0.15); 
+    pointer-events: none; 
+    display:none; 
+    z-index: 998;
+}
+
+#accessibility-menu { 
+    display:none; 
+    grid-template-columns: repeat(2, 1fr);
+} 
+
+#accessibility-menu.show-accessibility-menu { 
+    display: grid;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+} 
+
 .modal { 
     display: none; 
     position: fixed; 
@@ -546,7 +677,181 @@ body {
     </div>
 
 
-</footer>
+</footer> 
+
+<div id="reading-guide"></div> 
+
+<button id="accessibility-btn" aria-label="Accessibility-Menu">
+    <img src="https://cdn-icons-png.flaticon.com/512/3815/3815150.png" alt="Accessibility-Menu">
+</button>  
+
+<div id="accessibility-menu"> 
+    <button onclick="toggleContrast()"><i class="fa-solid fa-circle-half-stroke"></i> Contrast</button>
+
+    <button class="accessibility-slider"> 
+        <i class="fa-solid fa-text-height"></i> Bigger Text 
+        <div class="slider-with-icons"> 
+            <i class="fa-solid fa-minus"></i> 
+            <input type="range" id="textSizeSlider" min="1" max="3" step="0.05" value="1"  /> 
+            <i class="fa-solid fa-plus"></i> 
+        </div>
+    </button> 
+
+    <button class="accessibility-slider"> 
+        <i class="fa-solid fa-arrows-left-right"></i> Text Spacing 
+        <div class="slider-with-icons"> 
+         <i class="fa-solid fa-minus"></i>
+         <input type="range" id="textSpacingSlider" min="0" max="5" step="0.1" value="0" /> 
+         <i class="fa-solid fa-plus"></i>
+        </div>
+    </button>
+
+
+   <button onclick="pauseAnimations()"><i class="fa-solid fa-pause"></i> Pause Animations</button>
+   <button onclick="dyslexiaFont()"><i class="fa-solid fa-font"></i> Dyslexiya Friendly</button>
+   <button onclick="readingGuide()"><i class="fa-solid fa-book-open"></i>Reading Guide</button>
+   <button onclick="readAloud()"><i class="fa-solid fa-volume-high"></i>Read Aloud</button> 
+   <button onclick="changeTheme('light')"><i class="fa-solid fa-sun"></i> Light Theme</button>
+   <button onclick="changeTheme('dark')"><i class="fa-solid fa-moon"></i> Dark Theme</button>
+   <button onclick="changeTheme('blue')"><i class="fa-solid fa-water"></i>Blue Theme</button>
+   <button onclick="changeTheme('green')"><i class="fa-solid fa-leaf"></i>Green Theme</button>
+   <button onclick="resetAll()" class="reset"><i class="fa-solid fa-rotate-left"></i>Reset  </button>
+</div> 
+
+<script> 
+    const btn = document.getElementById("accessibility-btn"); 
+    const menu = document.getElementById("accessibility-menu"); 
+    const guide = document.getElementById("reading-guide");
+    const textSizeSlider = document.getElementById("textSizeSlider"); 
+    const textSpacingSlider = document.getElementById("textSpacingSlider"); 
+
+
+     textSizeSlider.oninput = function() {
+    
+      document.body.style.fontSize = `${this.value}em`;
+
+      };
+    
+     textSpacingSlider.oninput = function() { document.body.style.letterSpacing = `${ this.value}px`; } 
+    btn.onclick = () => { 
+        menu.style.display = menu.style.display === "grid" ? "none" : "grid";
+    }; 
+
+    function toggleContrast() {  
+        document.body.classList.toggle("high-contrast");
+     } 
+    
+     function biggerText() { 
+         document.body.classList.toggle("big-text"); 
+        }
+    
+    function textSpacing() { 
+        document.body.classList.toggle("spaced-text"); 
+    }
+    
+    function pauseAnimations() { 
+        document.body.classList.toggle("no-animation"); 
+    }
+    
+    function dyslexiaFont() {  
+        document.body.classList.toggle("dyslexia"); 
+    }
+    
+    function readingGuide() { 
+     if (guide.style.display === "block") { 
+        guide.style.display = "none"; 
+
+     } else { 
+        guide.style.display = "block";
+        
+        window.addEventListener("scroll", updateGuidePosition)
+     }
+     }
+     
+     function updateGuidePosition() { 
+        guide.style.top = `${window.scrollY + 30}px`;
+     }
+    
+     function readAloud() {
+        if(!window.speechSynthesis) { 
+            alert("Your browser does not support speech synthesis,"); 
+            return; 
+        }
+
+        window.speechSynthesis.cancel(); 
+       
+        const excludeIds = ["accessibility-menu", "accessibility-btn", "reading-guide"]; 
+        
+        function getText(node) { 
+            if(node.nodeType === Node.ELEMENT_NODE && excludeIds.includes(node.id)) {
+             return ""; 
+        } 
+
+            if(node.nodeType===Node.TEXT_NODE) {
+             return node.textContent.trim() + ""; 
+        } 
+
+            let text = ""; 
+            node.childNodes.forEach(child=>{ 
+                text +=getText(child);
+            });
+             return text; 
+        }
+     
+        const textToRead = getText(document.body).trim(); 
+        
+        if(!textToRead) {  
+            alert("No readable text fount."); 
+            return; 
+        }
+       
+        const utterance = new SpeechSynthesisUtterance(textToRead); 
+        utterance.lang="en-US";
+        utterance.rate=0.6;
+        utterance.pitch=2; 
+        
+         window.speechSynthesis.speak(utterance); 
+    
+    }
+
+    function changeTheme(theme) { 
+        switch(theme){ 
+            case"light":
+            document.body.style.backgroundColor='white'; 
+            document.body.style.color='black';
+             break;
+            
+             case "dark":
+             document.body.style.backgroundColor='#121212';
+             document.body.style.color='#f0f0f0'; 
+             break;
+            
+             case "blue": 
+             document.body.style.backgroundColor='#e0f7fa';
+             document.body.style.color='#006064';
+              break;
+            
+              case "green": 
+              document.body.style.backgroundColor='#e8f5e9';
+              document.body.style.color='#1b5e20';
+              break;
+           default: document.body.style.backgroundColor='#043b3d'; 
+           document.body.style.color='white';
+        }
+     } 
+
+     function resetAll() { 
+        document.body.className = ""; 
+        guide.style.display = "none"; 
+        document.body.style.backgroundColor = "#043b3d"; 
+        document.body.style.color = "white"; 
+        document.body.style.fontSize = "1em"; 
+        document.body.style.letterSpacing = "0px";
+        window.speechSynthesis.cancel(); 
+        window.removeEventListener("scroll" ,updateGuidePosition);   
+     }
+
+</script>
 
 <script> 
     const form = document.getElementById("JobForm"); 
