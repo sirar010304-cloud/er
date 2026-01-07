@@ -2,6 +2,7 @@
 <html>
     <head>
     <title>Hot Beans Web</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <style>
 html, body {
     height: 100%;
@@ -10,70 +11,54 @@ html, body {
 }
 
 
-.navbar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    overflow: hidden;
-    background-color: #093133;
-    display: flex;
-    align-items: center;
+.navbar{ 
+   background-color: #093133;
+   display: flex;
+   gap: 10px; 
+   padding: 10px 14px; 
+   align-items: center;
+   position:fixed;
+   top:0;
+   z-index: 1001;
+   width:100%;
 }
 
 
-.navbar a {
- float: left;
- font-size: 16px;
- color:white;
- text-align: center;
- padding: 14px 16px;
- text-decoration:none;
+.navbar a{
+color: white; 
+text-decoration:none;
+padding: 10px 12px ; 
+font-size: 15px; 
+border-radius: 6px; 
+transition: background-color 0.15s ease; 
+} 
+
+.navbar a:hover { 
+    background-color: #17adb3;
 }
 
 
 .dropdown {
- float: left;
- overflow: hidden;
-}
-
-
-.dropdown .dropbtn {
- font-size: 16px;
- border: none;
- outline: none;
- color: white;
- padding: 14px 16px;
- background-color: inherit;
- font-family: inherit;
- margin: 0;
-}
-
-
-.navbar a:hover,
-.dropdown:hover .dropbtn {
-    background-color:#17adb3;
+ position: relative;
 }
 
 
 .dropdown-content {
  display:none;
  position: absolute;
+ top: 100%;
+ left: 0;
  background-color: #043b3d;
  min-width: 160px;
  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
- z-index: 1100;
+ z-index: 1000;
 }
 
 
 .dropdown-content a {
- float: none;
- color: white;
  padding: 12px 16px;
- text-decoration: none;
+color: white;
  display: block;
- text-align: left;
 }
 
 
@@ -211,7 +196,7 @@ body {
 
 .hero {
     width: 100%;
-    height: 720px; 
+    height: 800px; 
     margin-top: -56px; 
     background-image: url('https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1600&q=60');
     background-size: cover;
@@ -220,7 +205,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} 
+
+.hero { 
+    min-height: 800px;
+} 
+
 .hero::before {
     content: "";
     position: absolute;
@@ -273,9 +263,10 @@ body {
 }
 
 .team-section {
-    background: #fff;
+    background:#043b3d;
     color: #222;
     padding: 60px 0;
+    position: relative;
 } 
 .team-banner {
     max-width: 1200px;
@@ -304,6 +295,8 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding-bottom: 20px;
+    flex-wrap: wrap; 
+    gap: 20px;
 }
 
 .team-wrap {
@@ -313,7 +306,48 @@ body {
     width: 140px;
     transition: margin-top 0.35s ease;
     position: relative; 
+} 
+
+#team-popup-panel { 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,0.95); 
+    transform: skewY(-15deg) translateX(100%); 
+    transform-origin: top right; 
+    transition: 0.35s; 
+    z-index: 999; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    pointer-events: none;
+} 
+
+#team-popup-panel.show { 
+    transform: skewY(-15deg) translateX(0); 
+} 
+
+ .popup-inner { 
+    transform: skewY(15deg);  
+    max-width: 600px; 
+    text-align: center;
+    color:#fff;
 }
+ 
+
+#popup-img { 
+    width: 180px; 
+    height: 180px; 
+    object-fit:cover; 
+    border-radius: 50%; 
+    margin-bottom: 20px; 
+    border: 4px solid rgba(255,255,255,0.3)
+}
+
+.team-wrap:hover { 
+    opacity: 1; 
+    pointer-events: auto;
+} 
+
 
 .team-meta {
     background: linear-gradient(180deg, #0b7b7f 0%, #0482a0 100%); 
@@ -455,18 +489,148 @@ body {
     .team-card { width: 45%; }
     .team-intro { padding: 0 16px; }
 }
+
+#accessibility-btn{ 
+    position: fixed; 
+    bottom: 20px; 
+    left: 20px; 
+    background: none; 
+    border: none; 
+    padding: 0; 
+    cursor: pointer; 
+    z-index: 1002;
+}  
+
+#accessibility-btn img { 
+    width: 56px; 
+    height: 56px; 
+    border-radius: 50%; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+    transition: transform 0.2s ease;
+} 
+
+#accessibility-btn img:hover { 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+    transition: transform 0.2s ease;
+}
+
+#accessibility-btn img:hover { transform: scale(1.08); }
+
+#accessibility-menu { 
+    display: none; 
+    position: fixed; 
+    bottom: 80px;
+    left: 20px; 
+    width: 400px;
+    height: auto;
+    max-height: 90vh; 
+    background: #008080; 
+    border-radius: 30px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 15px;
+    gap: 10px; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    scrollbar-width: thin; 
+    scrollbar-color: #00bfa5 #004d4d;
+} 
+
+#accessibility-menu::-webkit-scrollbar { 
+    width:6px; 
+} 
+
+#accessibility-menu::-webkit-scrollbar-track { background: #004d4d; border-radius: 30px; } 
+#accessibility-menu::-webkit-scrollbar-thumb { background-color: #00bfa5; border-radius: 30px; border:1px solid #004d4d; }
+
+
+#accessibility-menu button{ 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 8px;
+    background:white; 
+    cursor: pointer; 
+    border-radius: 10px; 
+    font-size: 12px; 
+    text-align: center; 
+    height: 74px;
+}
+
+#accessibility-menu button i { 
+    font-size: 20px; 
+    margin-bottom: 5px; 
+} 
+
+#accessibility-menu button:hover { 
+    background: #00bfa5; 
+    color:white;
+    border-color: #004d4d;
+}
+
+.reset { 
+    grid-column: span 2; 
+    background: #f5f5f5;
+} 
+
+.accessibility-slider { 
+    flex-direction: column; 
+} 
+
+.slider-with-icons {
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
+    margin-top: 5px; 
+    width:100%;
+}
+
+.high-contrast { background: black !important; color: yellow !important;}
+.big-text { font-size: 1.3em; } 
+.spaced-text { letter-spacing: 2px; }
+.no-animation * { animation: none !important; transition:none !important; }
+.dyslexia { font-family: Arial, verdana, sans-serif; } 
+.line-height{ line-height:2; } 
+
+#reading-guide { 
+    position:fixed; 
+    left: 0; 
+    width: 100%; 
+    height: 30px; 
+    background: rgba(0,95,204,0.15); 
+    pointer-events: none; 
+    display:none; 
+    z-index: 998;
+}
+
+#accessibility-menu { 
+    display:none; 
+    grid-template-columns: repeat(2, 1fr);
+} 
+
+#accessibility-menu.show-accessibility-menu { 
+    display: grid;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+} 
+
 </style>
  </head>
 
- <body style="background-color:#084446;">
+ <body style="background-color:#043b3d;">
 
     <div class="navbar">
    
         <a href=Hot%20Beans%20Web.html>Home</a>
-    <div class="dropdown">
-     <button class="dropbtn">About us
-        <i class="fa fa-caret-down"></i>
-     </button>
+   <div class="dropdown">
+     <a href="Hot%20Beans%20Web-About%20us%20.html">About us</a>
+     
      <div class="dropdown-content">
       <a href=Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
       <a href=Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
@@ -484,7 +648,7 @@ body {
         <h1>Meet the people behind Hot Beans</h1>
         <p>Creative minds. Bold ideas. Real impact.</p>
         <div class="hero-ctas">
-            <a class="cta-primary" href="#">See open roles</a>
+            <a class="cta-primary" href="Hot%20Beans%20Web-Vacancies.html">See open roles</a>
             <a class="cta-ghost" href="#">Contact us</a>
         </div>
     </div>
@@ -494,48 +658,62 @@ body {
     <div class="team-banner">MEET OUR TEAM</div>
 
     <div class="team-grid">
-        <div class="team-wrap">
+        <div class="team-wrap" data-member="Jianyu">
             <div class="team-card medium" style="background-image:url('https://s.isanook.com/mv/0/ud/34/171763/s_6d2b400bly1hlpsojnm49j22bc3.jpg?ip/resize/w728/q80/jpg')"></div>
             <div class="team-meta medium">
                 <div class="team-desc">Lead Strategist. Experienced in product and growth.</div>
-                <div class="team-name">Alice Smithwest</div>
-            </div>
-        </div> 
+                <div class="team-name">Jianyu li</div>
+            </div> 
+         </div>
+         
 
-        <div class="team-wrap">
+        <div class="team-wrap" data-member="Aaliyah">
             <div class="team-card xlarge" style="background-image:url('https://i.pinimg.com/1200x/22/7f/97/227f97d9387134080b9348cea8f7c5ad.jpg')"></div>
             <div class="team-meta xlarge">
                 <div class="team-desc">Design lead. Passionate about UX and visual storytelling.</div>
-                <div class="team-name">Lucy Umgallanga</div>
-            </div>
-        </div> 
+                <div class="team-name">Aaliyah brooks</div>
+            </div> 
+        </div>
+    
 
-        <div class="team-wrap">
+        <div class="team-wrap" data-member="Aisha">
             <div class="team-card large" style="background-image:url('https://i.pinimg.com/736x/4e/6a/e3/4e6ae3165366332958828e01ca327c81.jpg')"></div>
             <div class="team-meta large">
                 <div class="team-desc">Engineering lead. Backend and architecture specialist.</div>
-                <div class="team-name">Alan Sapkomerin</div>
-            </div>
-        </div> 
-
-        <div class="team-wrap">
-            <div class="team-card medium" style="background-image:url('https://images.unsplash.com/photo-1545996124-1b6b7f1f193f?auto=format&fit=crop&w=600&q=60')"></div>
+                <div class="team-name">Aisha Khan</div>
+            </div>  
+         </div>
+      
+         
+          <div class="team-wrap" data-member="John">
+            <div class="team-card medium" style="background-image:url('https://png.pngtree.com/png-vector/20240827/ourlarge/pngtree-professional-black-man-png-image_13448582.png')"></div>
             <div class="team-meta medium">
                 <div class="team-desc">Product manager. Focused on shipped outcomes.</div>
                 <div class="team-name">John Smith</div>
-            </div>
-        </div> 
+          </div>
+         </div> 
+        
 
-        <div class="team-wrap">
-            <div class="team-card xlarge" style="background-image:url('https://images.unsplash.com/photo-1546456073-6712f79251bb?auto=format&fit=crop&w=600&q=60')"></div>
+        <div class="team-wrap" data-member="Thomas">
+            <div class="team-card xlarge" style="background-image:url('https://preview.redd.it/seo-yejis-outfits-in-its-okay-to-not-be-okay-drama-v0-bf6wibsyq5sa1.jpg?width=640&crop=smart&auto=webp&s=c1bdfaa4a129a9ae3fc875eea78bb8b668af836d')"></div>
             <div class="team-meta xlarge">
                 <div class="team-desc">Operations lead. Keeps the team running smoothly.</div>
                 <div class="team-name">Thomas Doe</div>
-            </div>
-        </div> 
-    </div>
+            </div> 
+          </div> 
+    
+
+  </div>   
 </section>
    
+<div id="team-popup-panel"> 
+    <div class="popup-inner">
+        <img id="popup-img">
+        <h2 id="popup-name"></h2>
+        <p id="popup-desc"></p>
+    </div>
+ 
+    </div>
  <footer>
      
      <div class="footer-top">
@@ -587,6 +765,232 @@ body {
 
 </footer>
 
+<script> 
+ const popupPanel = document.getElementById('team-popup-panel'); 
+ const popupName = document.getElementById('popup-name');
+ const popupDesc = document.getElementById('popup-desc'); 
+ const popupImg = document.getElementById("popup-img"); 
 
-</body>
+ const members = { 
+    Jianyu: { 
+        name: "Jianyu li", 
+        desc: "Jianyu li is out lead web developer team with technical mastery and creative insight.He has an extensive experience in building dynamic,user friendly websites ensuring that every projct runs smoothly from the concept to launch.He is very passionate about mentoring his team,exploring the latest web technologies and finding innovative solutions to complex challenges.",
+        img: "https://s.isanook.com/mv/0/ud/34/171763/s_6d2b400bly1hlpsojnm49j22bc3.jpg?ip/resize/w728/q80/jpg"
+    },
+    Aaliyah: { 
+        name: "Aaliyah brooks", 
+        desc: "Aaliyah brooks is the UX/UI Designer at Hot Beans Web,where she shapes engaging and intuitive user experiences across all projects.Aaliyah excels at turning complex concepts into clea,user-friendly interface and works closely with the development team. ",                                          
+        img: "https://i.pinimg.com/1200x/22/7f/97/227f97d9387134080b9348cea8f7c5ad.jpg"
+    },
+    Aisha: { 
+        name: "Aisha Khan", 
+        desc: "Aisha Khan is our Senior Web Development Mnager with extensive experience in designing and leading modern and user friendly solutions.She also specializes in overseeing full-stack development projects.",
+        img: "https://i.pinimg.com/736x/4e/6a/e3/4e6ae3165366332958828e01ca327c81.jpg"
+    },
+    John: { 
+        name: "John Smith", 
+        desc: "John Smith is also a Senior Web Developer and has a strong background in building efficient,scanable and responsive web applications.He also works with modern web technologies and plays a key role in developing and maintaining high qualitydigital solutions.",
+        img: "https://png.pngtree.com/png-vector/20240827/ourlarge/pngtree-professional-black-man-png-image_13448582.png"
+    },
+    Thomas: { 
+        name: "Thomas Doe", 
+        desc: "Haerin is a Web Development Manager with a proven track record of leading development teams and delivering high-performing web applications.She combines strong technical expertise leadership to ensuer that the projects are completed on time.",
+        img: "https://preview.redd.it/seo-yejis-outfits-in-its-okay-to-not-be-okay-drama-v0-bf6wibsyq5sa1.jpg?width=640&crop=smart&auto=webp&s=c1bdfaa4a129a9ae3fc875eea78bb8b668af836d"
+    } 
+};
+ 
+ const teamwrap = document.querySelectorAll('.team-wrap'); 
+
+  teamwrap.forEach(wrap => {  
+     const key = wrap.dataset.member; 
+
+    wrap.addEventListener('mouseenter', () => { 
+        popupName.textContent = members[key].name; 
+        popupDesc.textContent = members[key].desc; 
+        popupImg.src = members[key].img; 
+        popupPanel.classList.add('show');
+    }); 
+    wrap.addEventListener('mouseleave', () => { 
+        popupPanel.classList.remove('show'); 
+    }); 
+}); 
+
+
+</script> 
+
+<div id="reading-guide"></div> 
+
+<button id="accessibility-btn" aria-label="Accessibility-Menu">
+    <img src="https://cdn-icons-png.flaticon.com/512/3815/3815150.png" alt="Accessibility-Menu">
+</button>  
+
+<div id="accessibility-menu"> 
+    <button onclick="toggleContrast()"><i class="fa-solid fa-circle-half-stroke"></i> Contrast</button>
+
+    <button class="accessibility-slider"> 
+        <i class="fa-solid fa-text-height"></i> Bigger Text 
+        <div class="slider-with-icons"> 
+            <i class="fa-solid fa-minus"></i> 
+            <input type="range" id="textSizeSlider" min="1" max="3" step="0.05" value="1"  /> 
+            <i class="fa-solid fa-plus"></i> 
+        </div>
+    </button> 
+
+    <button class="accessibility-slider"> 
+        <i class="fa-solid fa-arrows-left-right"></i> Text Spacing 
+        <div class="slider-with-icons"> 
+         <i class="fa-solid fa-minus"></i>
+         <input type="range" id="textSpacingSlider" min="0" max="5" step="0.1" value="0" /> 
+         <i class="fa-solid fa-plus"></i>
+        </div>
+    </button>
+
+
+   <button onclick="pauseAnimations()"><i class="fa-solid fa-pause"></i> Pause Animations</button>
+   <button onclick="dyslexiaFont()"><i class="fa-solid fa-font"></i> Dyslexiya Friendly</button>
+   <button onclick="readingGuide()"><i class="fa-solid fa-book-open"></i>Reading Guide</button>
+   <button onclick="readAloud()"><i class="fa-solid fa-volume-high"></i>Read Aloud</button> 
+   <button onclick="changeTheme('light')"><i class="fa-solid fa-sun"></i> Light Theme</button>
+   <button onclick="changeTheme('dark')"><i class="fa-solid fa-moon"></i> Dark Theme</button>
+   <button onclick="changeTheme('blue')"><i class="fa-solid fa-water"></i>Blue Theme</button>
+   <button onclick="changeTheme('green')"><i class="fa-solid fa-leaf"></i>Green Theme</button>
+   <button onclick="resetAll()" class="reset"><i class="fa-solid fa-rotate-left"></i>Reset  </button>
+</div> 
+
+<script> 
+    const btn = document.getElementById("accessibility-btn"); 
+    const menu = document.getElementById("accessibility-menu"); 
+    const guide = document.getElementById("reading-guide");
+    const textSizeSlider = document.getElementById("textSizeSlider"); 
+    const textSpacingSlider = document.getElementById("textSpacingSlider"); 
+
+
+     textSizeSlider.oninput = function() {
+    
+      document.body.style.fontSize = `${this.value}em`;
+
+      };
+    
+     textSpacingSlider.oninput = function() { document.body.style.letterSpacing = `${ this.value}px`; } 
+    btn.onclick = () => { 
+        menu.style.display = menu.style.display === "grid" ? "none" : "grid";
+    }; 
+
+    function toggleContrast() {  
+        document.body.classList.toggle("high-contrast");
+     } 
+    
+     function biggerText() { 
+         document.body.classList.toggle("big-text"); 
+        }
+    
+    function textSpacing() { 
+        document.body.classList.toggle("spaced-text"); 
+    }
+    
+    function pauseAnimations() { 
+        document.body.classList.toggle("no-animation"); 
+    }
+    
+    function dyslexiaFont() {  
+        document.body.classList.toggle("dyslexia"); 
+    }
+    
+    function readingGuide() { 
+     if (guide.style.display === "block") { 
+        guide.style.display = "none"; 
+
+     } else { 
+        guide.style.display = "block";
+        
+        window.addEventListener("scroll", updateGuidePosition)
+     }
+     }
+     
+     function updateGuidePosition() { 
+        guide.style.top = `${window.scrollY + 30}px`;
+     }
+    
+     function readAloud() {
+        if(!window.speechSynthesis) { 
+            alert("Your browser does not support speech synthesis,"); 
+            return; 
+        }
+
+        window.speechSynthesis.cancel(); 
+       
+        const excludeIds = ["accessibility-menu", "accessibility-btn", "reading-guide"]; 
+        
+        function getText(node) { 
+            if(node.nodeType === Node.ELEMENT_NODE && excludeIds.includes(node.id)) {
+             return ""; 
+        } 
+
+            if(node.nodeType===Node.TEXT_NODE) {
+             return node.textContent.trim() + ""; 
+        } 
+
+            let text = ""; 
+            node.childNodes.forEach(child=>{ 
+                text +=getText(child);
+            });
+             return text; 
+        }
+     
+        const textToRead = getText(document.body).trim(); 
+        
+        if(!textToRead) {  
+            alert("No readable text fount."); 
+            return; 
+        }
+       
+        const utterance = new SpeechSynthesisUtterance(textToRead); 
+        utterance.lang="en-US";
+        utterance.rate=0.6;
+        utterance.pitch=2; 
+        
+         window.speechSynthesis.speak(utterance); 
+    
+    }
+
+    function changeTheme(theme) { 
+        switch(theme){ 
+            case"light":
+            document.body.style.backgroundColor='white'; 
+            document.body.style.color='black';
+             break;
+            
+             case "dark":
+             document.body.style.backgroundColor='#121212';
+             document.body.style.color='#f0f0f0'; 
+             break;
+            
+             case "blue": 
+             document.body.style.backgroundColor='#e0f7fa';
+             document.body.style.color='#006064';
+              break;
+            
+              case "green": 
+              document.body.style.backgroundColor='#e8f5e9';
+              document.body.style.color='#1b5e20';
+              break;
+           default: document.body.style.backgroundColor='#043b3d'; 
+           document.body.style.color='white';
+        }
+     } 
+
+     function resetAll() { 
+        document.body.className = ""; 
+        guide.style.display = "none"; 
+        document.body.style.backgroundColor = "#043b3d"; 
+        document.body.style.color = "white"; 
+        document.body.style.fontSize = "1em"; 
+        document.body.style.letterSpacing = "0px";
+        window.speechSynthesis.cancel(); 
+        window.removeEventListener("scroll" ,updateGuidePosition);   
+     }
+
+</script>
+
+ </body>
 </html>
