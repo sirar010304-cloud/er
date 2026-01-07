@@ -337,9 +337,10 @@ footer {
 
 .subscribe-btn {
  background: #093133;
- color: black;
- padding: 12px 30px;
+ color: #fff;
+ padding: 12px 18px;
  border: none;
+ border-radius: 6px;
  font-size: 16px;
  cursor: pointer;
 }
@@ -347,25 +348,21 @@ footer {
 
 .subscribe-btn:hover {
     background: #baff8b;
+    color: #000;
 }
 
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 20;
+.newsletter-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
-
-.social-icons span{
-    font-size: 24px;
-    margin:0 10px;
-    cursor: pointer ;
-    color: #ccc;
-}
-
-
-.social-icons span:hover {
-    color:white;
+.newsletter-input {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  min-width: 220px;
 }
 
 #accessibility-btn{ 
@@ -407,7 +404,7 @@ footer {
     left: 20px; 
     width: 400px;
     height: auto;
-    max-height: 90vh; 
+    max-height: 78vh; 
     background: #008080; 
     border-radius: 30px; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -417,6 +414,7 @@ footer {
     overflow-x: hidden; 
     scrollbar-width: thin; 
     scrollbar-color: #00bfa5 #004d4d;
+    z-index: 9999;
 } 
 
 #accessibility-menu::-webkit-scrollbar { 
@@ -628,7 +626,13 @@ body {
           <span class="newsletter-icon">✉</span>
           <p>Sign up for Hot Beans Web</p>
         </div>
-    </div>
+   
+        
+    <form class="newsletter-form"> 
+        <input type="email" placeholder="Your email" class="newsletter-input"> 
+        <button type="submit" class="subscribe-btn">Subscribe</button>
+    </form>
+</div>
 
 
     <div class="footer-bottom">
