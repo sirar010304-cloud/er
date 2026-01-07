@@ -440,11 +440,15 @@ body {
  </head>
  
  <body style="background-color:#043b3d;">
- 
+  
+
+  
+    
     <div class="navbar">
+   <a href="Hot%20Beans%20Web.html">Home</a> 
+      
    
-        <a href=Hot%20Beans%20Web.html>Home</a>
-    <div class="dropdown">
+   <div class="dropdown">
      <a href="Hot%20Beans%20Web-About%20us%20.html">About us</a>
           <div class="dropdown-content">
       <a href=Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
@@ -452,6 +456,7 @@ body {
       <a href="">History</a>
      </div>
     </div>
+    
     <a href=Hot%20beans%20web-Meet%20our%20team.html>Meet our team</a>
     <a href=Hot%20Beans%20Web-Vacancies.html>Vacancies</a>
     <a href=Hot%20Beans%20Web-Application.html>Application form</a>
@@ -555,8 +560,13 @@ body {
           <span class="newsletter-icon">✉</span>
           <p>Sign up for Hot Beans Web</p>
         </div>
-    </div>
+    
 
+    <form class="newsletter-form"> 
+        <input type="email" placeholder="Your email" class="newsletter-input"> 
+        <button type="submit" class="subscribe-btn">Subscribe</button>
+    </form>
+</div>
 
     <div class="footer-bottom">
         <p>Follow Hot Beans Web</p>
@@ -618,13 +628,13 @@ body {
 
 
      textSizeSlider.oninput = function() {
-     document.body.classList.remove("big-text");
-      document.body.style.fontSize = `${ this.value}em`;
+      document.body.style.fontSize = `${this.value}em`;
 
       };
     
      textSpacingSlider.oninput = function() { document.body.style.letterSpacing = `${ this.value}px`; } 
-    btn.onclick = () => { 
+    
+     btn.onclick = () => { 
         menu.style.display = menu.style.display === "grid" ? "none" : "grid";
     }; 
 
@@ -653,7 +663,7 @@ body {
         guide.style.display = "none"; 
 
      } else { 
-        quide.style.display = "block";
+        guide.style.display = "block";
         
         window.addEventListener("scroll", updateGuidePosition)
      }
@@ -739,9 +749,14 @@ body {
         document.body.style.fontSize = "1em"; 
         document.body.style.letterSpacing = "0px";
         window.speechSynthesis.cancel(); 
-        window.removeEventListener("scroll, updateGuidePosition");   
+        window.removeEventListener("scroll" ,updateGuidePosition);   
      }
 
-</script>
+
+
+</script> 
+
+
+
 </body>
 </html>
