@@ -123,7 +123,16 @@ text-align: left;
     0%{transform: translateY(0px)rotate(0deg);} 
     50%{transform:translateX(-15px) rotate(10deg);} 
     100%{ transform:translateY(0px)rotate(0deg);}
- }
+ } 
+
+ .hero-accent h2 { 
+    transform: rotate(-90deg); 
+    font-size: 3rem; 
+    color: White;  
+    letter-spacing: 6px;
+} 
+
+
 
  .container { 
     flex: 1; 
@@ -363,11 +372,13 @@ footer {
     position: fixed; 
     bottom: 20px; 
     left: 20px; 
+    width:auto;
+    margin:0;
     background: none; 
     border: none; 
     padding: 0; 
     cursor: pointer; 
-    z-index: 1002;
+    z-index: 11000;
 }  
 
 #accessibility-btn img { 
@@ -376,6 +387,7 @@ footer {
     border-radius: 50%; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
     transition: transform 0.2s ease;
+    display:block;
 } 
 
 #accessibility-btn img:hover { 
@@ -394,6 +406,7 @@ footer {
     bottom: 80px;
     left: 20px; 
     width: 400px;
+    height: auto;
     max-height: 90vh; 
     background: #008080; 
     border-radius: 30px; 
@@ -404,7 +417,6 @@ footer {
     overflow-x: hidden; 
     scrollbar-width: thin; 
     scrollbar-color: #00bfa5 #004d4d;
-    z-index: 9999;
 } 
 
 #accessibility-menu::-webkit-scrollbar { 
@@ -475,56 +487,8 @@ footer {
     z-index: 998;
 }
 
-#accessibility-menu { 
-    display:none; 
-    grid-template-columns: repeat(2, 1fr);
-} 
 
-#accessibility-menu.show-accessibility-menu { 
-    display: grid;
-}
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-} 
 
-.modal { 
-    display: none; 
-    position: fixed; 
-    z-index: 2000; 
-    left: 0; 
-    top: 0; 
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-} 
-
-.modal-content { 
-    background-color: #17adb3; 
-    margin: 20% auto; 
-    padding:30px; 
-    border-radius: 12px; 
-    width: 80%; 
-    max-width: 400px; 
-    text-align:center; 
-    color: #052729; 
-    font-size: 18px; 
-    font-weight: bold; 
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-} 
-
-.close-btn { 
-    color: #052729; 
-    float: right; 
-    font-size: 28px; 
-    font-weight: bold; 
-    cursor: pointer;
-}
-
-.close-btn:hover { 
-    color: #fff;
-}
 
 @media (max-width: 640px) { 
     .container { 
@@ -679,6 +643,22 @@ body {
 
 </footer> 
 
+<script> 
+    const form = document.getElementById("JobForm"); 
+    const modal = document.getElementById("successModal");  
+    const closeBtn = document.querySelector("close-btn");
+
+    form.addEventListener("submit", async (e) => { 
+        e.preventDefault(); 
+    modal.style.display = "block";
+    setTimeout(()=>modal.style.display="none", 4000);
+    });
+
+    closeBtn.onclick =()=>modal.style.display="none";
+
+</script> 
+
+
 <div id="reading-guide"></div> 
 
 <button id="accessibility-btn" aria-label="Accessibility-Menu">
@@ -727,13 +707,13 @@ body {
 
 
      textSizeSlider.oninput = function() {
-    
       document.body.style.fontSize = `${this.value}em`;
 
       };
     
      textSpacingSlider.oninput = function() { document.body.style.letterSpacing = `${ this.value}px`; } 
-    btn.onclick = () => { 
+    
+     btn.onclick = () => { 
         menu.style.display = menu.style.display === "grid" ? "none" : "grid";
     }; 
 
@@ -851,22 +831,9 @@ body {
         window.removeEventListener("scroll" ,updateGuidePosition);   
      }
 
-</script>
+</script> 
 
-<script> 
-    const form = document.getElementById("JobForm"); 
-    const modal = document.getElementById("successModal");  
-    const closeBtn = document.querySelector("close-btn");
 
-    form.addEventListener("submit", async (e) => { 
-        e.preventDefault(); 
-    modal.style.display = "block";
-    setTimeout(()=>modal.style.display="none", 4000);
-    });
-
-    closeBtn.onclick =()=>modal.style.display="none";
-
-</script>
 
 </body>
 </html>
