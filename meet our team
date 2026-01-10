@@ -2,6 +2,7 @@
 <html>
     <head>
     <title>Hot Beans Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <style>
 html, body {
@@ -23,6 +24,18 @@ html, body {
    width:100%;
 }
 
+#navToggle { display:none; background:none; border:none; color:#fff; font-size:22px; padding:8px; cursor:pointer; }
+.nav-items { display:flex; gap:10px; align-items:center; }
+.nav-items a, .nav-items .dropbtn { color: #fff; text-decoration: none; padding: 8px 10px; border-radius: 6px; }
+
+@media (max-width: 800px){
+  #navToggle { display:block; }
+  .nav-items { display:none; position: absolute; top:56px; left:0; right:0; background:#093133; flex-direction:column; padding:12px 16px; z-index:1001; max-height: calc(100vh - 72px); overflow-y:auto; }
+  .nav-items.open { display:flex; animation: hotbeans-slide 220ms cubic-bezier(.2,.9,.2,1) both; }
+  .nav-items a { width:100%; padding:10px 8px; }
+  .dropdown-content { position: static; display:none; }
+  .dropbtn[aria-expanded="true"] + .dropdown-content { display:block; }
+}
 
 .navbar a{
 color: white; 
@@ -32,6 +45,21 @@ font-size: 15px;
 border-radius: 6px; 
 transition: background-color 0.15s ease; 
 } 
+
+@keyframes hotbeans-slide { from { opacity: 0; transform: translateY(-6px);} to { opacity:1; transform: translateY(0);} }
+
+/* Hero adjustments */
+.hero { min-height: 500px; }
+.hero h1 { font-size: 40px; }
+@media (max-width:900px){ .hero { min-height: 380px;} .hero h1{ font-size:32px;} }
+@media (max-width:640px){ .hero { min-height: 260px;} .hero h1{ font-size:24px;} .hero p{ font-size:14px;} }
+
+/* Team grid responsive tweaks */
+.team-grid{ display:flex; justify-content:center; align-items:flex-start; gap:18px; flex-wrap:wrap; }
+.team-wrap{ width: 140px; }
+@media (max-width: 900px){ .team-wrap{ width: 120px;} .team-grid{ gap:12px;} }
+@media (max-width: 640px){ .team-wrap{ width: 45%; } .team-card{ width:100%; } }
+@media (max-width: 420px){ .team-wrap{ width: 100%; } .team-card{ width:100%; } }
 
 .navbar a:hover { 
     background-color: #17adb3;
@@ -128,6 +156,7 @@ footer {
  display: flex;
  justify-content: space-between;
  align-items: center;
+    gap: 16px;
 }
 
 
@@ -135,6 +164,7 @@ footer {
     display: flex;
     align-items: center;
     gap: 15px;
+    flex: 0 0 auto;
 }
 
 
@@ -151,11 +181,13 @@ footer {
 }
 
 
+
 .subscribe-btn {
  background: #093133;
- color: black;
- padding: 12px 30px;
+ color: #fff;
+ padding: 12px 18px;
  border: none;
+ border-radius: 6px;
  font-size: 16px;
  cursor: pointer;
 }
@@ -163,20 +195,44 @@ footer {
 
 .subscribe-btn:hover {
     background: #baff8b;
+    color: #000;
 }
+
+.newsletter-right { flex:0 0 auto; }
+.newsletter-form { display:flex; gap:8px; align-items:center; }
+.newsletter-input { padding:10px 12px; border-radius:6px; border:1px solid #ccc; font-size:14px; min-width:220px; }
+
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+@media (max-width: 800px) {
+  .newsletter { flex-direction: column; align-items: flex-start; gap:12px; padding: 0 16px; }
+  .newsletter-right { width:100%; display:flex; justify-content:flex-start; }
+  .newsletter-input { min-width: 100%; }
+  .subscribe-btn { flex: 0 0 auto; }
+}  
 
 
 .footer-bottom {
     text-align: center;
     margin-top: 20px;
     color: #ccc;
-} 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding-top: 12px;
+}
 
+.social-icons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
 
 .social-icons span{
     font-size: 24px;
     margin:0 10px;
-    cursor: pointer ;
+    cursor: pointer;
     color: #ccc;
 }
 
@@ -332,6 +388,12 @@ body {
     text-align: center;
     color:#fff;
 }
+
+@media (max-width: 640px){
+  #team-popup-panel { align-items:flex-start; padding-top: 40px; }
+  .popup-inner{ transform: none; max-width: 92%; padding: 18px; border-radius: 8px; }
+  #popup-img{ width: 140px; height: 140px; }
+} 
  
 
 #popup-img { 
@@ -626,22 +688,23 @@ body {
  <body style="background-color:#043b3d;">
 
     <div class="navbar">
-   
-        <a href=Hot%20Beans%20Web.html>Home</a>
-   <div class="dropdown">
-     <a href="Hot%20Beans%20Web-About%20us%20.html">About us</a>
-     
-     <div class="dropdown-content">
-      <a href=Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
-      <a href=Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
-      <a href="">History</a>
-     </div>
+        <button id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navItems">☰</button>
+        <div id="navItems" class="nav-items" role="navigation">
+            <a href="Hot%20Beans%20Web.html">Home</a>
+            <div class="dropdown">
+                <a href="Hot%20Beans%20Web-About%20us%20.html" class="dropbtn" id="aboutBtn" aria-expanded="false">About us</a>
+                <div class="dropdown-content" aria-hidden="true">
+                    <a href="Hot%20Beans%20Web-Contact%20us%20%20.html">Contact us</a>
+                    <a href="Hot%20Beans%20Web-Our%20mission%20.html">Our mission</a>
+                    <a href="">History</a>
+                </div>
+            </div>
+            <a href="Hot%20beans%20web-Meet%20our%20team.html">Meet our team</a>
+            <a href="Hot%20Beans%20Web-Vacancies.html">Vacancies</a>
+            <a href="Hot%20Beans%20Web-Application.html">Application form</a>
+            <a href="Hot%20beans%20web-Courses.html">Courses</a>
+        </div>
     </div>
-    <a href=Hot%20beans%20web-Meet%20our%20team.html>Meet our team</a>
-    <a href=Hot%20Beans%20Web-Vacancies.html>Vacancies</a>
-    <a href=Hot%20Beans%20Web-Application.html>Application form</a>
-     <a href=Hot%20beans%20web-Courses.html>Courses</a>
- </div>
  
  <section class="hero" role="banner" aria-label="Hero">
     <div class="hero-content">
@@ -745,11 +808,20 @@ body {
    
     </div>
      
-    <div class="newsletter">
+    <div class="newsletter" aria-label="Footer newsletter and search">
         <div class="newsletter-left">
-          <span class="newsletter-icon">✉</span>
+          <span class="newsletter-icon" aria-hidden="true">✉</span>
           <p>Sign up for Hot Beans Web</p>
         </div>
+    
+        <div class="newsletter-right">
+          <form class="newsletter-form" action="#" method="post" onsubmit="handleSubscribe(event)" aria-label="Subscribe to newsletter">
+            <label for="newsletterEmail" class="sr-only">Email address</label>
+            <input id="newsletterEmail" type="email" name="email" placeholder="Enter your email" required class="newsletter-input" aria-label="Email address">
+            <button class="subscribe-btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+        <div id="footerFeedback" class="sr-only" aria-live="polite"></div>
     </div>
 
 
@@ -814,6 +886,51 @@ body {
         popupPanel.classList.remove('show'); 
     }); 
 }); 
+
+
+</script>
+
+<script>
+(function(){
+  var toggle = document.getElementById('navToggle');
+  var nav = document.getElementById('navItems');
+  if(!toggle || !nav) return;
+  nav.setAttribute('aria-hidden','true');
+
+  function openNav(){ nav.classList.add('open'); nav.setAttribute('aria-hidden','false'); toggle.setAttribute('aria-expanded','true'); document.body.classList.add('nav-open'); var first = nav.querySelector('a, button, [tabindex]'); if(first) first.focus(); }
+  function closeNav(returnFocus){ nav.classList.remove('open'); nav.setAttribute('aria-hidden','true'); toggle.setAttribute('aria-expanded','false'); document.body.classList.remove('nav-open'); if(returnFocus) toggle.focus(); }
+
+  toggle.addEventListener('click', function(e){ if(nav.classList.contains('open')) closeNav(true); else openNav(); });
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ closeNav(false); }); });
+
+  document.addEventListener('click', function(e){ if(!nav.contains(e.target) && !toggle.contains(e.target)) { if(nav.classList.contains('open')) closeNav(false); } });
+  document.addEventListener('keydown', function(ev){
+    if(ev.key === 'Escape'){ if(nav.classList.contains('open')) closeNav(true); }
+    if(ev.key === 'Tab' && nav.classList.contains('open')){
+      var focusables = nav.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+      if(focusables.length === 0) return;
+      var first = focusables[0], last = focusables[focusables.length -1];
+      if(ev.shiftKey && document.activeElement === first){ ev.preventDefault(); last.focus(); }
+      else if(!ev.shiftKey && document.activeElement === last){ ev.preventDefault(); first.focus(); }
+    }
+  });
+})();
+</script>
+
+<script>
+function handleSubscribe(e) {
+  e.preventDefault();
+  var email = document.getElementById('newsletterEmail').value;
+  var feedback = document.getElementById('footerFeedback');
+  if (!email) {
+    feedback.textContent = 'Please enter a valid email address.';
+    return;
+  }
+  feedback.textContent = 'Thanks for subscribing — ' + email;
+  document.getElementById('newsletterEmail').value = '';
+  setTimeout(function(){ feedback.textContent = ''; }, 4000);
+  alert('Thanks for subscribing!');
+}
 
 
 </script> 
