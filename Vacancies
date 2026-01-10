@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
     <title>Hot Beans Web</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <style>
 html, body {
     height: 100%;
@@ -9,52 +10,60 @@ html, body {
     font-family: Times New Roman;
 }
 
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    background: #fff;
+    color: #000;
+    padding: 8px 12px;
+    z-index: 10000;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.skip-link:focus {
+    left: 10px;
+    top: 10px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 
 .navbar{ 
-    position:absolute; 
-    top:0; 
-    left: 0;
-    width: 100%;
-    display: flex; 
-    flex-wrap: wrap; 
-    background-color: rgba(9,49,51,0.8);
-    padding: 0 20px;
-    z-index: 20; 
-   
+   background-color: #093133;
+   display: flex;
+   gap: 10px; 
+   padding: 10px 14px; 
+   align-items: center;
 }
 
 
 .navbar a{
- float: left;
- font-size: 16px;
- color:white;
- text-align: center;
- padding: 14px 16px;
- text-decoration:none;
+color: white; 
+text-decoration:none;
+padding: 10px 12px ; 
+font-size: 15px; 
+border-radius: 6px; 
+transition: background-color 0.15s ease; 
+} 
+
+.navbar a:hover { 
+    background-color: #17adb3;
 }
 
 
 .dropdown {
- float: left;
- overflow: hidden;
-}
-
-
-.dropdown .dropbtn {
- font-size: 16px;
- border: none;
- outline: none;
- color: white;
- padding: 14px 16px;
- background-color: inherit;
- font-family: inherit;
- margin: 0;
-}
-
-
-.navbar a:hover,
-.dropdown:hover .dropbtn {
-    background-color:#17adb3;
+ position: relative;
 }
 
 
@@ -66,17 +75,14 @@ html, body {
  background-color: #043b3d;
  min-width: 160px;
  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
- z-index: 30;
+ z-index: 1000;
 }
 
 
 .dropdown-content a {
- float: none;
- color: white;
  padding: 12px 16px;
- text-decoration: none;
+color: white;
  display: block;
- text-align: left;
 }
 
 
@@ -142,6 +148,155 @@ html, body {
     letter-spacing: 6px;
 } 
 
+
+#accessibility-btn{ 
+    position: fixed; 
+    bottom: 20px; 
+    left: 20px; 
+    background: none; 
+    border: none; 
+    padding: 0; 
+    cursor: pointer; 
+    z-index: 1002;
+}  
+
+#accessibility-btn img { 
+    width: 56px; 
+    height: 56px; 
+    border-radius: 50%; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+    transition: transform 0.2s ease;
+} 
+
+#accessibility-btn img:hover { 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+    transition: transform 0.2s ease;
+}
+
+#accessibility-btn img:hover { transform: scale(1.08); }
+
+#accessibility-menu { 
+    display: none; 
+    position: fixed; 
+    bottom: 80px;
+    left: 20px; 
+    width: 400px;
+    height: auto;
+    max-height: 90vh; 
+    background: #008080; 
+    border-radius: 30px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 15px;
+    gap: 10px; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    scrollbar-width: thin; 
+    scrollbar-color: #00bfa5 #004d4d;
+    z-index: 9999;
+} 
+
+#accessibility-menu::-webkit-scrollbar { 
+    width:6px; 
+} 
+
+#accessibility-menu::-webkit-scrollbar-track { background: #004d4d; border-radius: 30px; } 
+#accessibility-menu::-webkit-scrollbar-thumb { background-color: #00bfa5; border-radius: 30px; border:1px solid #004d4d; }
+
+
+#accessibility-menu button{ 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 8px;
+    background:white; 
+    cursor: pointer; 
+    border-radius: 10px; 
+    font-size: 12px; 
+    text-align: center; 
+    height: 74px;
+}
+
+#accessibility-menu button i { 
+    font-size: 20px; 
+    margin-bottom: 5px; 
+} 
+
+#accessibility-menu button:hover { 
+    background: #00bfa5; 
+    color:white;
+    border-color: #004d4d;
+}
+
+.reset { 
+    grid-column: span 2; 
+    background: #f5f5f5;
+} 
+
+#accessibility-toggle { 
+    position: fixed; 
+    left:20px; 
+    bottom: 20px; 
+    width: 60px; 
+    height: 60px; 
+    background: #fff; 
+    border-radius:50%; 
+    border: none; 
+    cursor: pointer; 
+    box-shadow: 0 4 px 8 px rgba(0,0,0,0.3); 
+    display:flex;
+    align-items: center;
+    justify-content:center; 
+    z-index: 9999; 
+    transition: box-shadow 0.2s; 
+} 
+
+#accessibility-toggle:hover { 
+    box-shadow:0 6px 12px rgba(0,0,0,0.4);
+}
+
+.accessibility-slider { 
+    flex-direction: column; 
+} 
+
+.slider-with-icons {
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
+    margin-top: 5px; 
+    width:100%;
+}
+
+.high-contrast { background: black !important; color: yellow !important;}
+.big-text { font-size: 1.3em; } 
+.spaced-text { letter-spacing: 2px; }
+.no-animation * { animation: none !important; transition:none !important; }
+.dyslexia { font-family: Arial, verdana, sans-serif; } 
+.line-height{ line-height:2; } 
+
+#reading-guide { 
+    position:fixed; 
+    left: 0; 
+    width: 100%; 
+    height: 30px; 
+    background: rgba(0,95,204,0.15); 
+    pointer-events: none; 
+    display:none; 
+    z-index: 998;
+}
+
+#accessibility-menu { 
+    display:none; 
+    grid-template-columns: repeat(2, 1fr);
+} 
+
+#accessibility-menu.show-accessibility-menu { 
+    display: grid;
+}
+
 .filters{ 
    display: flex;
    justify-content: center;
@@ -159,7 +314,8 @@ html, body {
    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 } 
 
-#searchInput {
+.search-form { display:flex; align-items:center; gap:8px; }
+ #searchInput {
  padding: 14px 22px;
  border-radius: 30px; 
  outline: none; 
@@ -169,7 +325,17 @@ border: 2px solid #093133;
 background-color:#17adb3;
 color:#043b3d; 
 transition: all 0.3s ease; 
- } 
+ }
+
+#searchInput:focus {
+    border-color: #093133; 
+    box-shadow: 0 0 12px rgba(23,173,179,0.4); 
+}
+
+.search-btn { background:#17adb3; border:none; color:#fff; padding:10px 12px; border-radius:25px; cursor:pointer; font-size:1rem; }
+.search-btn:hover{ background:#0ea7a9; }
+
+.job[tabindex="0"]:focus { outline: 3px solid #17adb3; outline-offset: 2px; }
 
  #searchInput:focus {
     border-color: #093133; 
@@ -379,11 +545,12 @@ footer {
 
 .footer-column a {
  display: block;
- color: #043b3d;
+ color: #fff;
  text-decoration: none;
  margin: 8px 0;
  font-size: 15px;
 }
+.footer-top, .footer-bottom, .footer-column h3 { color: #fff; }
 
 
 .footer-column a:hover {
@@ -397,6 +564,7 @@ footer {
  display: flex;
  justify-content: space-between;
  align-items: center;
+ gap: 20px;
 }
 
 
@@ -415,18 +583,45 @@ footer {
 }
 
 
-.subscribe-btn {
- background: #093133;
- color: black;
- padding: 12px 30px;
- border: none;
- font-size: 16px;
- cursor: pointer;
+/* Newsletter form: make input and subscribe button share width (slightly smaller) */
+.newsletter-form {
+    display:flex;
+    align-items:center;
+    gap:6px;
+    width:360px;
+    max-width:50%;
 }
 
+.newsletter-input {
+    flex: 1 1 auto;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 2px solid #093133;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.subscribe-btn {
+    flex: 1 1 auto;
+    background: #093133;
+    color: white;
+    padding: 10px 12px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 6px;
+}
 
 .subscribe-btn:hover {
-    background: #baff8b;
+    background: #0ea7a9;
+    color: white;
+}
+
+@media (max-width: 700px) {
+    .newsletter { flex-direction: column; align-items: stretch; }
+    .newsletter-form { width: 100%; max-width: 100%; }
+    .newsletter-input, .subscribe-btn { width: 100%; flex: none; }
 }
 
 
@@ -469,23 +664,150 @@ footer {
     font-size: 20px;
     } 
 
-    body {
+#accessibility-btn{ 
+    position: fixed; 
+    bottom: 20px; 
+    left: 20px; 
+    background: none; 
+    border: none; 
+    padding: 0; 
+    cursor: pointer; 
+    z-index: 1002;
+}  
+
+#accessibility-btn img { 
+    width: 56px; 
+    height: 56px; 
+    border-radius: 50%; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+    transition: transform 0.2s ease;
+} 
+
+#accessibility-btn img:hover { 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+    transition: transform 0.2s ease;
+}
+
+#accessibility-btn img:hover { transform: scale(1.08); }
+
+#accessibility-menu { 
+    display: none; 
+    position: fixed; 
+    bottom: 80px;
+    left: 20px; 
+    width: 400px;
+    max-height: 90vh; 
+    background: #008080; 
+    border-radius: 30px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 15px;
+    gap: 10px; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    scrollbar-width: thin; 
+    scrollbar-color: #00bfa5 #004d4d;
+    z-index: 9999;
+} 
+
+#accessibility-menu::-webkit-scrollbar { 
+    width:6px; 
+} 
+
+#accessibility-menu::-webkit-scrollbar-track { background: #004d4d; border-radius: 30px; } 
+#accessibility-menu::-webkit-scrollbar-thumb { background-color: #00bfa5; border-radius: 30px; border:1px solid #004d4d; }
+
+
+#accessibility-menu button{ 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 8px;
+    background:white; 
+    cursor: pointer; 
+    border-radius: 10px; 
+    font-size: 12px; 
+    text-align: center; 
+    height: 74px;
+}
+
+#accessibility-menu button i { 
+    font-size: 20px; 
+    margin-bottom: 5px; 
+} 
+
+#accessibility-menu button:hover { 
+    background: #00bfa5; 
+    color:white;
+    border-color: #004d4d;
+}
+
+.reset { 
+    grid-column: span 2; 
+    background: #f5f5f5;
+} 
+
+.accessibility-slider { 
+    flex-direction: column; 
+} 
+
+.slider-with-icons {
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
+    margin-top: 5px; 
+    width:100%;
+}
+
+.high-contrast { background: black !important; color: yellow !important;}
+.big-text { font-size: 1.3em; } 
+.spaced-text { letter-spacing: 2px; }
+.no-animation * { animation: none !important; transition:none !important; }
+.dyslexia { font-family: Arial, verdana, sans-serif; } 
+.line-height{ line-height:2; } 
+
+#reading-guide { 
+    position:fixed; 
+    left: 0; 
+    width: 100%; 
+    height: 30px; 
+    background: rgba(0,95,204,0.15); 
+    pointer-events: none; 
+    display:none; 
+    z-index: 998;
+}
+
+#accessibility-menu { 
+    display:none; 
+    grid-template-columns: repeat(2, 1fr);
+} 
+
+#accessibility-menu.show-accessibility-menu { 
+    display: grid;
+}
+body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
+} 
+
+
+
 </style>
  </head>
  
  <body style="background-color:white;">
+    <a href="#jobslist" class="skip-link">Skip to content</a>
  
     <div class="navbar">
    
         <a href=Hot%20Beans%20Web.html>Home</a>
     <div class="dropdown">
-     <button class="dropbtn">About us
-        <i class="fa fa-caret-down"></i>
-     </button>
+     <a href="Hot%20Beans%20Web-About%20us%20.html">About us</a>
+     
      <div class="dropdown-content">
       <a href=Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
       <a href=Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
@@ -508,9 +830,13 @@ footer {
             </div> 
          </section> 
         <div class="filters"> 
-            <input type="text" id="searchInput" placeholder="Search by job title...">
+            <form id="searchForm" role="search" class="search-form" onsubmit="return false;">
+                <label for="searchInput" class="sr-only">Search jobs</label>
+                <input type="text" id="searchInput" placeholder="Search by job title..." aria-label="Search jobs">
+                <button type="submit" id="searchBtn" aria-label="Search" class="search-btn">🔍</button>
+            </form>
             <label for="expFilter">Experience:</label> 
-            <select id="expFilter"> 
+            <select id="expFilter" aria-label="Experience filter"> 
               <option value="all">All</option>
               <option value="junior">Junior</option>
               <option value="mid">Mid</option> 
@@ -518,14 +844,14 @@ footer {
             </select>  
 
             <label for="locFilter">Location:</label> 
-            <select id="locFilter"> 
+            <select id="locFilter" aria-label="Location filter"> 
                <option value="all">All</option>
                <option value="remote">Remote</option>
                <option value="onsite">On-site</option>
                 </select> 
 
             <label for="salaryFilter">Salary:</label>  
-            <select id="salaryFilter"> 
+            <select id="salaryFilter" aria-label="Salary sorting"> 
                 <option value="all">All</option> 
                 <option value="default">Default</option> 
                 <option value="low">Low → High</option>    
@@ -536,7 +862,7 @@ footer {
     <section class="jobs" id="jobslist"> 
     <h2>Available Positions</h2> 
 
-    <div class="job" data-exp="junior" data-loc="remote" data-salary="26000"> 
+    <div class="job" tabindex="0" data-exp="junior" data-loc="remote" data-salary="26000"> 
         <div class="job-icon">JR</div> 
         <div class="job-box"> 
             <div class="job-content"> 
@@ -547,12 +873,12 @@ footer {
                     <li>HTML, CSS, JavaScript basics</li>
                     <li>Mentorship available</li> 
                 </ul>
-                <a href="#" class="apply">Apply Now</a> 
+                <a href="Hot%20Beans%20Web-Application.html" class="apply">Apply Now</a> 
             </div>
         </div>
     </div> 
 
-    <div class="job" data-exp="mid" data-loc="onsite" data-salary="42000">
+    <div class="job" tabindex="0" data-exp="mid" data-loc="onsite" data-salary="42000">
         <div class="job-icon">FE</div> 
         <div class="job-box">
             <div class="job-content"> 
@@ -563,12 +889,12 @@ footer {
                     <li>HTML, CSS, JavaScript advanced</li>
                     <li>Collaborate with designers</li> 
                 </ul>
-                <a href="#" class="apply">Apply Now</a> 
+                <a href="Hot%20Beans%20Web-Application.html" class="apply">Apply Now</a> 
             </div>
         </div>
     </div> 
 
-    <div class="job" data-exp="senior" data-loc="remote" data-salary="55000">
+    <div class="job" tabindex="0" data-exp="senior" data-loc="remote" data-salary="55000">
         <div class="job-icon">FS</div> 
         <div class="job-box">
             <div class="job-content"> 
@@ -579,12 +905,12 @@ footer {
                     <li>Front-end and back-end systems</li> 
                     <li>5+ years experience</li>
                 </ul>
-                <a href="#" class="apply">Apply Now</a> 
+                <a href="Hot%20Beans%20Web-Application.html" class="apply">Apply Now</a> 
             </div>
         </div> 
     </div>
    
-    <div class="job" data-exp="junior" data-loc="onsite" data-salary="28000">
+    <div class="job" tabindex="0" data-exp="junior" data-loc="onsite" data-salary="28000">
         <div class="job-icon">WD</div> 
         <div class="job-box">
             <div class="job-content"> 
@@ -595,12 +921,12 @@ footer {
                     <li>HTML/CSS design</li>  
                     <li>Basic JavaScript interactivity</li> 
                 </ul>
-                <a href="#" class="apply">Apply Now</a> 
+                <a href="Hot%20Beans%20Web-Application.html" class="apply">Apply Now</a> 
             </div>
         </div> 
     </div>
 
-    <div class="job" data-exp="mid" data-loc="remote" data-salary="48000">
+    <div class="job" tabindex="0" data-exp="mid" data-loc="remote" data-salary="48000">
         <div class="job-icon">BE</div> 
         <div class="job-box">
             <div class="job-content"> 
@@ -611,12 +937,12 @@ footer {
                     <li>Node.js / Python development</li> 
                     <li>Database management</li>
                 </ul>
-                <a href="#" class="apply">Apply Now</a> 
+                <a href="Hot%20Beans%20Web-Application.html" class="apply">Apply Now</a> 
             </div>
         </div> 
     </div>
 
-    <div class="job" data-exp="senior" data-loc="onsite" data-salary="62000">
+    <div class="job" tabindex="0" data-exp="senior" data-loc="onsite" data-salary="62000">
         <div class="job-icon">DE</div> 
         <div class="job-box">
             <div class="job-content"> 
@@ -627,12 +953,12 @@ footer {
                     <li>Cloud development</li> 
                     <li>Server and infrastructure management</li>
                 </ul>
-                <a href="#" class="apply">Apply Now</a> 
+                <a href="Hot%20Beans%20Web-Application.html" class="apply">Apply Now</a> 
             </div>
         </div> 
     </div>
 
-    <div class="job" data-exp="mid" data-loc="remote" data-salary="45000">
+    <div class="job" tabindex="0" data-exp="mid" data-loc="remote" data-salary="45000">
         <div class="job-icon">QA</div> 
         <div class="job-box">
             <div class="job-content"> 
@@ -643,12 +969,12 @@ footer {
                     <li>Automated and manual testing</li> 
                     <li>Bug reporting and tracking</li>
                 </ul>
-                <a href="#" class="apply">Apply Now</a> 
+                <a href="Hot%20Beans%20Web-Application.html" class="apply">Apply Now</a> 
             </div>
         </div> 
     </div>
 
-    <div class="job" data-exp="junior" data-loc="remote" data-salary="27000">
+    <div class="job" tabindex="0" data-exp="junior" data-loc="remote" data-salary="27000">
         <div class="job-icon">UI</div> 
         <div class="job-box">
             <div class="job-content"> 
@@ -659,11 +985,225 @@ footer {
                     <li>Wireframing and prototyping</li> 
                     <li>Collaborate with front-end teams</li>
                 </ul>
-                <a href="#" class="apply">Apply Now</a> 
+                <a href="Hot%20Beans%20Web-Application.html" class="apply">Apply Now</a> 
             </div>
         </div> 
     </div>
-</section>
+</section> 
+
+<div id="reading-guide"></div> 
+
+<button id="accessibility-btn" aria-label="Accessibility menu" aria-haspopup="true" aria-expanded="false" aria-controls="accessibility-menu">
+    <img src="https://cdn-icons-png.flaticon.com/512/3815/3815150.png" alt="Open accessibility menu">
+</button>  
+
+<div id="accessibility-menu" role="dialog" aria-hidden="true" aria-label="Accessibility options" tabindex="-1"> 
+    <button onclick="toggleContrast()"><i class="fa-solid fa-circle-half-stroke"></i> Contrast</button>
+
+    <button class="accessibility-slider"> 
+        <i class="fa-solid fa-text-height"></i> Bigger Text 
+        <div class="slider-with-icons"> 
+            <i class="fa-solid fa-minus"></i> 
+            <input type="range" id="textSizeSlider" min="1" max="3" step="0.05" value="1" aria-label="Text size" /> 
+            <i class="fa-solid fa-plus"></i> 
+        </div>
+    </button> 
+
+    <button class="accessibility-slider"> 
+        <i class="fa-solid fa-arrows-left-right"></i> Text Spacing 
+        <div class="slider-with-icons"> 
+         <i class="fa-solid fa-minus"></i>
+         <input type="range" id="textSpacingSlider" min="0" max="5" step="0.1" value="0" aria-label="Text spacing" /> 
+         <i class="fa-solid fa-plus"></i>
+        </div>
+    </button>
+
+
+   <button onclick="pauseAnimations()"><i class="fa-solid fa-pause"></i> Pause Animations</button>
+   <button onclick="dyslexiaFont()"><i class="fa-solid fa-font"></i> Dyslexiya Friendly</button>
+   <button onclick="readingGuide()"><i class="fa-solid fa-book-open"></i>Reading Guide</button>
+   <button onclick="readAloud()"><i class="fa-solid fa-volume-high"></i>Read Aloud</button> 
+   <button onclick="changeTheme('light')"><i class="fa-solid fa-sun"></i> Light Theme</button>
+   <button onclick="changeTheme('dark')"><i class="fa-solid fa-moon"></i> Dark Theme</button>
+   <button onclick="changeTheme('blue')"><i class="fa-solid fa-water"></i>Blue Theme</button>
+   <button onclick="changeTheme('green')"><i class="fa-solid fa-leaf"></i>Green Theme</button>
+   <button onclick="resetAll()" class="reset"><i class="fa-solid fa-rotate-left"></i>Reset  </button>
+</div> 
+<div id="a11y-status" aria-live="polite" class="sr-only"></div>
+<script> 
+    const btn = document.getElementById("accessibility-btn"); 
+    const menu = document.getElementById("accessibility-menu"); 
+    const guide = document.getElementById("reading-guide");
+    const textSizeSlider = document.getElementById("textSizeSlider"); 
+    const textSpacingSlider = document.getElementById("textSpacingSlider"); 
+
+   
+
+     textSizeSlider.oninput = function() {
+    
+      document.body.style.fontSize = `${this.value}em`;
+
+      };
+    
+     textSpacingSlider.oninput = function() { document.body.style.letterSpacing = `${ this.value}px`; } 
+    function openAccessibilityMenu(open) {
+        const shouldOpen = typeof open === 'boolean' ? open : (menu.style.display !== 'grid');
+        if (shouldOpen) {
+            menu.style.display = 'grid';
+            btn.setAttribute('aria-expanded','true');
+            menu.setAttribute('aria-hidden','false');
+            const a11y = document.getElementById('a11y-status');
+            if (a11y) a11y.textContent = 'Accessibility menu opened.';
+            // Focus the first interactive element inside the menu
+            const first = menu.querySelector('button, [tabindex]:not([tabindex="-1"])');
+            if (first) first.focus();
+            document.addEventListener('keydown', handleAccessibilityKeydown);
+        } else {
+            menu.style.display = 'none';
+            btn.setAttribute('aria-expanded','false');
+            menu.setAttribute('aria-hidden','true');
+            const a11y = document.getElementById('a11y-status');
+            if (a11y) a11y.textContent = 'Accessibility menu closed.';
+            btn.focus();
+            document.removeEventListener('keydown', handleAccessibilityKeydown);
+        }
+    }
+    // Toggle on click or keyboard activation (Enter/Space)
+    btn.addEventListener('click', () => openAccessibilityMenu());
+    btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openAccessibilityMenu();
+        }
+    });
+    function handleAccessibilityKeydown(e) {
+        if (e.key === 'Escape') {
+            openAccessibilityMenu(false);
+        }
+    } 
+
+    function toggleContrast() {  
+        document.body.classList.toggle("high-contrast");
+     } 
+    
+     function biggerText() { 
+         document.body.classList.toggle("big-text"); 
+        }
+    
+    function textSpacing() { 
+        document.body.classList.toggle("spaced-text"); 
+    }
+    
+    function pauseAnimations() { 
+        document.body.classList.toggle("no-animation"); 
+    }
+    
+    function dyslexiaFont() {  
+        document.body.classList.toggle("dyslexia"); 
+    }
+    
+    function readingGuide() { 
+     if (guide.style.display === "block") { 
+        guide.style.display = "none"; 
+
+     } else { 
+        guide.style.display = "block";
+        
+        window.addEventListener("scroll", updateGuidePosition)
+     }
+     }
+     
+     function updateGuidePosition() { 
+        guide.style.top = `${window.scrollY + 30}px`;
+     }
+    
+     function readAloud() {
+        if(!window.speechSynthesis) { 
+            alert("Your browser does not support speech synthesis."); 
+            return; 
+        }
+
+        window.speechSynthesis.cancel(); 
+       
+        const excludeIds = ["accessibility-menu", "accessibility-btn", "reading-guide"]; 
+        
+        function getText(node) { 
+            if(node.nodeType === Node.ELEMENT_NODE && excludeIds.includes(node.id)) {
+             return ""; 
+        } 
+
+            if(node.nodeType===Node.TEXT_NODE) {
+             return node.textContent.trim() + ""; 
+        } 
+
+            let text = ""; 
+            node.childNodes.forEach(child=>{ 
+                text +=getText(child);
+            });
+             return text; 
+        }
+     
+        const textToRead = getText(document.body).trim(); 
+        
+        if(!textToRead) {  
+            alert("No readable text found."); 
+            return; 
+        }
+       
+        const utterance = new SpeechSynthesisUtterance(textToRead); 
+        utterance.lang="en-US";
+        utterance.rate=0.6;
+        utterance.pitch=2; 
+        
+         window.speechSynthesis.speak(utterance); 
+    
+    }
+
+    function changeTheme(theme) { 
+        switch(theme){ 
+            case"light":
+            document.body.style.backgroundColor='white'; 
+            document.body.style.color='black';
+             break;
+            
+             case "dark":
+             document.body.style.backgroundColor='#121212';
+             document.body.style.color='#f0f0f0'; 
+             break;
+            
+             case "blue": 
+             document.body.style.backgroundColor='#e0f7fa';
+             document.body.style.color='#006064';
+              break;
+            
+              case "green": 
+              document.body.style.backgroundColor='#e8f5e9';
+              document.body.style.color='#1b5e20';
+              break;
+           default: document.body.style.backgroundColor='#043b3d'; 
+           document.body.style.color='white';
+        }
+     } 
+
+     function resetAll() { 
+        document.body.className = ""; 
+        guide.style.display = "none"; 
+        document.body.style.backgroundColor = "#043b3d"; 
+        document.body.style.color = "white"; 
+        document.body.style.fontSize = "1em"; 
+        document.body.style.letterSpacing = "0px";
+        // hide accessibility menu and reset ARIA state
+        if (menu) { 
+            menu.style.display = 'none';
+            menu.setAttribute('aria-hidden','true');
+        }
+        if (btn) { btn.setAttribute('aria-expanded','false'); btn.focus(); }
+        window.speechSynthesis.cancel(); 
+        window.removeEventListener("scroll" ,updateGuidePosition);   
+     }
+
+</script>
+
     <footer>
      
      <div class="footer-top">
@@ -700,7 +1240,14 @@ footer {
           <span class="newsletter-icon">✉</span>
           <p>Sign up for Hot Beans Web</p>
         </div>
-    </div>
+   
+
+     <form class="newsletter-form" id="newsletterForm" aria-label="Subscribe to newsletter"> 
+        <label for="newsletterEmail" class="sr-only">Email address</label>
+        <input type="email" id="newsletterEmail" name="email" placeholder="Your email" class="newsletter-input" aria-label="Email address" required> 
+        <button type="submit" class="subscribe-btn" id="subscribeBtn">Subscribe</button>
+    </form>
+</div>
 
 
     <div class="footer-bottom">
@@ -714,6 +1261,8 @@ footer {
 
 
 </footer>
+
+<!-- duplicate accessibility button removed -->
 
 <script>
     
@@ -769,6 +1318,38 @@ salarySort.addEventListener('change', () => {
     sortJobs(); 
     filterJobs(); // Keep filter applied after sorting
 });
+
+// Search form submission handling: prevent full page submit and focus first result
+const searchForm = document.getElementById('searchForm');
+if (searchForm) {
+  searchForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    filterJobs();
+    const firstVisible = document.querySelector('.job:not(.hidden)');
+    if (firstVisible) firstVisible.focus();
+  });
+}
+
+// Newsletter subscribe handling with validation and accessible announcements
+const newsletterForm = document.getElementById('newsletterForm');
+if (newsletterForm) {
+  newsletterForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const email = (this.email && this.email.value) ? this.email.value.trim() : '';
+    const a11y = document.getElementById('a11y-status');
+    if (!validateEmail(email)) {
+      if (a11y) a11y.textContent = 'Please enter a valid email address.';
+      return;
+    }
+    if (a11y) a11y.textContent = 'Thank you! Subscription confirmed.';
+    this.reset();
+  });
+}
+
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 </script>
 
 
