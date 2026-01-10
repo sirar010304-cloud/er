@@ -11,6 +11,7 @@ html, body {
 }
 
 
+
 .navbar{ 
     position: fixed; 
     top: 0; 
@@ -46,6 +47,8 @@ body {
  background-color:#17adb3; 
  border-radius: 8px;
 }
+
+
 
 .dropdown {
     position: relative;
@@ -274,6 +277,7 @@ footer {
 }
 
 
+
 .footer-top {
  display: flex;
  justify-content: space-around;
@@ -281,6 +285,8 @@ footer {
  margin:auto;
  padding-bottom: 40px;
  border-bottom: 1px solid #333;
+ gap: 20px;
+ align-items: flex-start;
 }
 
 
@@ -299,16 +305,31 @@ footer {
 
 .footer-column a {
  display: block;
- color: #043b3d;
+ color: #093133;
  text-decoration: none;
  margin: 8px 0;
  font-size: 15px;
+ transition: color 0.15s ease;
 }
+.footer-top, .footer-bottom, .footer-column h3 { color: #fff; }
 
 
 .footer-column a:hover {
     text-decoration: underline;
 }
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    gap: 12px;
+}
+
+.social-icons { display:flex; gap: 14px; justify-content:center; align-items:center; }
+.social-icons span{ color: #ccc; font-size: 24px; }
+.social-icons span:hover { color: white; }
 
 
 .newsletter {
@@ -325,6 +346,7 @@ footer {
     align-items: center;
     gap: 15px;
 }
+
 
 
 .newsletter-icon{
@@ -579,16 +601,24 @@ body {
         <p>💡Keep your CV concise and highlight your key skills. </p>
         <p>✍ Write a personlized cover letter showing that you are fit.</p>
         <p>📌 Make suer that you have selected the correct position.</p>
-        <p>⏱ Applications are revviewed in 4-6 business days.</p>
+        <p>⏱ Applications are revviewed in 4-6 business days.</p>  
     </div>
  </div>
 
-        <div id="successModal" class="modal"> 
-        <div class="modal-content"> 
-            <span class="close-btn">&times;</span>
-            <p> 🎉 Application submitted successfully!</p>
+        <div id="successModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="successTitle">
+        <div class="modal-content" tabindex="-1" role="document">
+            <button class="close-btn" aria-label="Close dialog">&times;</button>
+            <h2 id="successTitle">You have submitted your form successfully</h2>
+            <p id="successMessage">Thank you for applying — we will review your submission shortly.</p>
         </div>
      </div>
+
+    <!-- Centered toast-style success card -->
+    <div id="successToast" class="toast-card" role="status" aria-live="polite" aria-hidden="true" tabindex="-1">
+        <button class="toast-close" aria-label="Dismiss">&times;</button>
+        <h3 class="toast-title">You have submitted your form successfully</h3>
+        <p class="toast-message">Thank you for applying — we will review your submission shortly.</p>
+    </div>
 
  <footer>
      
@@ -645,21 +675,49 @@ body {
     </div>
 
 
-</footer> 
+</footer>
 
-<script> 
-    const form = document.getElementById("JobForm"); 
-    const modal = document.getElementById("successModal");  
-    const closeBtn = document.querySelector("close-btn");
+<script>
+    const form = document.getElementById("JobForm");
+    const modal = document.getElementById("successModal");
+    const modalContent = modal ? modal.querySelector('.modal-content') : null;
+    const closeBtn = modal ? modal.querySelector('.close-btn') : null;
+    let lastFocusedElement = null;
 
-    form.addEventListener("submit", async (e) => { 
-        e.preventDefault(); 
-    modal.style.display = "block";
-    setTimeout(()=>modal.style.display="none", 4000);
-    });
+    function openModal(){
+      if(!modal) return;
+      lastFocusedElement = document.activeElement;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      if(modalContent) modalContent.focus();
+      document.addEventListener('keydown', handleModalKeydown);
+    }
 
-    closeBtn.onclick =()=>modal.style.display="none";
+    function closeModal(){
+      if(!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+      if(lastFocusedElement) lastFocusedElement.focus();
+      document.removeEventListener('keydown', handleModalKeydown);
+    }
 
+    function handleModalKeydown(e){
+      if(e.key === 'Escape') closeModal();
+    }
+
+    if (form) {
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        openModal();
+        setTimeout(closeModal, 4000);
+      });
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    if (modal) {
+      modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+    }
 </script> 
 
 
@@ -719,7 +777,11 @@ body {
     
      btn.onclick = () => { 
         menu.style.display = menu.style.display === "grid" ? "none" : "grid";
-    }; 
+    };
+
+ 
+
+/* Site search handler removed (search moved to footer newsletter) */
 
     function toggleContrast() {  
         document.body.classList.toggle("high-contrast");
