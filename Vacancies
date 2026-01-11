@@ -94,6 +94,37 @@ color: white;
  display: block;
 }
 
+#menu-toggle { 
+    display: none; 
+    background: none; 
+    border: none; 
+    cursor: pointer; 
+    font-size: 24px; 
+    color: white;
+} 
+
+@media(max-width: 700px) { 
+    #menu-toggle { 
+        display: block;
+    } 
+
+    .navbar { 
+        flex-direction: column; 
+        align-items: flex-start; 
+    } 
+
+    .navbar .navbar-links { 
+        display:none; 
+        flex-direction: column; 
+        width: 100%;
+    } 
+
+    .navbar .navbar-links.show { 
+        display: flex;
+    }
+}
+
+
 .hero { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
@@ -511,6 +542,27 @@ transition: all 0.3s ease;
     background: #1cb4bc; 
 }
 
+@media(max-width: 700px) { 
+    .footer-top { 
+        flex-direction: column; 
+        align-items: center;
+    } 
+
+    .footer-column { 
+        width: 100%; 
+        margin-bottom: 20px;
+    } 
+
+    .newsletter { 
+        flex-direction: column; 
+        align-items: center;
+    } 
+
+    .newletter-form { 
+        width: 100%;
+    }
+}
+
 footer {
     background: #000;
     color: white;
@@ -583,7 +635,7 @@ footer {
 }
 
 
-/* Newsletter form: make input and subscribe button share width (slightly smaller) */
+
 .newsletter-form {
     display:flex;
     align-items:center;
@@ -1244,7 +1296,7 @@ body {
 
      <form class="newsletter-form" id="newsletterForm" aria-label="Subscribe to newsletter"> 
         <label for="newsletterEmail" class="sr-only">Email address</label>
-        <input type="email" id="newsletterEmail" name="email" placeholder="Your email" class="newsletter-input" aria-label="Email address" required> 
+        <input type="email" id="newsletterEmail" name="email" placeholder="Enter your email" class="newsletter-input" aria-label="Email address" required> 
         <button type="submit" class="subscribe-btn" id="subscribeBtn">Subscribe</button>
     </form>
 </div>
@@ -1262,7 +1314,19 @@ body {
 
 </footer>
 
-<!-- duplicate accessibility button removed -->
+<script> 
+    
+   const menuToggle = document.getElementById('menu-toggle'); 
+    const navLinks = document.getElementById('nav-links');
+     
+    menuToggle.addEventListener('click', () => { 
+          const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false; 
+          menuToggle.setAttribute('aria-expanded', String(!expanded)); 
+          navLinks.classList.toggle('show');  
+
+    });
+     
+    </script>
 
 <script>
     
