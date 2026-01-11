@@ -285,8 +285,6 @@ footer {
  margin:auto;
  padding-bottom: 40px;
  border-bottom: 1px solid #333;
- gap: 20px;
- align-items: flex-start;
 }
 
 
@@ -305,7 +303,7 @@ footer {
 
 .footer-column a {
  display: block;
- color: #093133;
+ color: #fff;
  text-decoration: none;
  margin: 8px 0;
  font-size: 15px;
@@ -351,9 +349,9 @@ footer {
 
 .newsletter-icon{
     font-size:32px;
-    border: 2px solid #093133;
+    border: 2px solid #fff;
     padding: 8px;
-    color:#093133;
+    color:#fff;
 }
 
 
@@ -365,6 +363,8 @@ footer {
  border-radius: 6px;
  font-size: 16px;
  cursor: pointer;
+ margin-bottom: 18px;
+ width:auto;
 }
 
 
@@ -377,15 +377,21 @@ footer {
   display: flex;
   gap: 8px;
   align-items: center;
+  width: 100%;
+  max-width: 400px;
 }
 
 .newsletter-input {
   padding: 10px 12px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #000;
   font-size: 14px;
-  min-width: 220px;
+  min-width: 200px; 
+  background-color: #fff; 
+  color: black;
 }
+
+
 
 #accessibility-btn{ 
     position: fixed; 
@@ -607,17 +613,11 @@ body {
 
         <div id="successModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="successTitle">
         <div class="modal-content" tabindex="-1" role="document">
-            <button class="close-btn" aria-label="Close dialog">&times;</button>
-            <h2 id="successTitle">You have submitted your form successfully</h2>
-            <p id="successMessage">Thank you for applying — we will review your submission shortly.</p>
         </div>
      </div>
 
     <!-- Centered toast-style success card -->
     <div id="successToast" class="toast-card" role="status" aria-live="polite" aria-hidden="true" tabindex="-1">
-        <button class="toast-close" aria-label="Dismiss">&times;</button>
-        <h3 class="toast-title">You have submitted your form successfully</h3>
-        <p class="toast-message">Thank you for applying — we will review your submission shortly.</p>
     </div>
 
  <footer>
@@ -659,7 +659,7 @@ body {
    
         
     <form class="newsletter-form"> 
-        <input type="email" placeholder="Your email" class="newsletter-input"> 
+        <input type="email" placeholder="Enter your email" class="newsletter-input"> 
         <button type="submit" class="subscribe-btn">Subscribe</button>
     </form>
 </div>
@@ -780,8 +780,6 @@ body {
     };
 
  
-
-/* Site search handler removed (search moved to footer newsletter) */
 
     function toggleContrast() {  
         document.body.classList.toggle("high-contrast");
