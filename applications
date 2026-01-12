@@ -2,6 +2,7 @@
 <html>
     <head>
     <title>Hot Beans Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <style>
 html, body {
@@ -24,6 +25,28 @@ html, body {
     align-items: center; 
     padding: 10px 14px;
 } 
+
+
+.nav-brand { 
+    display: none; 
+    font-size : 18px; 
+    font-weight: bold; 
+    flex: 1;
+}
+
+.nav-toggle { 
+    display: none; 
+    font-size: 24px; 
+    cursor: pointer; 
+    background: none; 
+    border: none; 
+    color: white;
+}
+
+.nav-links { 
+    display: flex; 
+    gap: 10px;
+}
 
 body { 
     display: flex; 
@@ -508,21 +531,52 @@ footer {
     display:none; 
     z-index: 998;
 }
-@media (max-width: 600px) {
-    .container { 
-        margin: 20px; 
-        padding: 20px;
-    }  
 
- .footer-top{ 
-    flex-direction:column; 
-    align-items: center;
- } 
+@media (max-width: 768px) {
 
- .navbar { 
-    flex-wrap: wrap; 
-    padding: 10px;
- }
+    .nav-toggle {
+        display:block;
+    }
+
+    .nav-links {
+        display:none;
+        flex-direction:column;
+        width:100%;
+        background:#093133;
+    }
+
+    .nav-links.show {
+        display:flex;
+    }
+
+    .dropdown-content {
+        position: static;
+    }
+
+    .form-wrapper {
+        flex-direction:column;
+        margin:20px;
+    }
+
+    .info-panel {
+        width:100%;
+    }
+
+    .footer-top {
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .footer-column {
+        width:100%;
+        text-align:center;
+    }
+
+    #accessibility-menu {
+        width:90%;
+        left:5%;
+    }
+}
 
 body {
     display: flex;
@@ -530,7 +584,7 @@ body {
     min-height: 100vh;
 } 
 
-}
+
 
 #successPopup {
     display: none; 
@@ -559,13 +613,95 @@ body {
     text-align: center;
 }
 
+@media (max-width: 900px) { 
+ .footer-top{ 
+    flex-direction: column; 
+    text-align: center; 
+    align-items: center;
+    gap: 30px; 
+    padding-bottom: 20px;
+ } 
+
+.footer-column { 
+    width: 100%; 
+} 
+
+.footer-columnn h3 { 
+    text-align: center;
+} 
+
+.footer-column a { 
+    font-size: 16px;
+} 
+
+.newsletter { 
+    flex-direction: column; 
+    gap: 20px; 
+    padding:0 20px; 
+    text-align: center;
+} 
+
+.newsletter-left { 
+    justify-content:center; 
+} 
+
+.newsletter-form { 
+    flex-direction: column; 
+    width: 100%; 
+    max-width:100%; 
+} 
+
+.newsletter-input { 
+    width: 100%; 
+    min-width: unset;
+} 
+
+.subscribe-btn { 
+    width:100%;
+} 
+
+.footer-bottom { 
+    padding: 20px; 
+    gap: 15px; 
+} 
+
+.social-icons { 
+    gap: 20px;
+}
+} 
+
+@media (max-width: 480px) { 
+
+    footer { 
+        padding: 30px 0;
+    } 
+
+    .footer-column h3 { 
+        font-size: 18px; 
+    } 
+
+    .footer-column a { 
+        font-size: 15px; 
+
+        .newsletter-icon { 
+            font-size: 28px; 
+
+            .social-icons span { 
+                font-size: 22px; 
+            }
+}
+
 </style>
  </head>
  
  <body style="background-color:#043b3d;">
  
-    <div class="navbar">
-   
+    <div class="navbar"> 
+
+        <div class="nav-brand">Hot Beans Web</div> 
+        <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+
+      <div class="nav-links">
         <a href=Hot%20Beans%20Web.html>Home</a>
     <div class="dropdown">
      <a href="Hot%20Beans%20Web-About%20us%20.html">About us</a>
@@ -581,7 +717,8 @@ body {
     <a href=Hot%20Beans%20Web-Application.html>Application form</a>
      <a href=Hot%20beans%20web-Courses.html>Courses</a>
  </div>
-   
+
+ </div>
  <div class="form-wrapper"> 
     <div class="side-decor side-left1"></div> 
     <div class="side-decor side-left2"></div> 
@@ -872,13 +1009,19 @@ body {
 
 </script> 
 
+<script>
+document.querySelector(".nav-toggle").addEventListener("click", () => {
+    document.querySelector(".nav-links").classList.toggle("show");
+});
+</script>
+
 <script> 
 const form = document.getElementById("JobForm");
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    // Create the popup div
+   
     const successPopup = document.createElement("div");
     successPopup.id = "successPopup";
     successPopup.style.cssText = `
@@ -894,7 +1037,7 @@ form.addEventListener("submit", function(event) {
         z-index: 9999;
     `;
 
-    // Create popup content
+   
     successPopup.innerHTML = `
         <div class="popup-card" style="
             background-color: #fff;
@@ -920,19 +1063,18 @@ form.addEventListener("submit", function(event) {
         </div>
     `;
 
-    // Append popup to body
+   
     document.body.appendChild(successPopup);
 
-    // Close button functionality
+
     successPopup.querySelector(".close-popup").addEventListener("click", () => {
         successPopup.remove();
     });
 
-    // Reset the form
+   
     form.reset();
 });
     </script>
 
 </body>
 </html>
-
