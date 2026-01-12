@@ -38,6 +38,11 @@ html, body {
     border: 0;
 }
 
+.navbar-links { 
+    display: flex; 
+    gap: 10px; 
+    align-items: center;
+}
 
 .navbar{ 
    background-color: #093133;
@@ -64,6 +69,8 @@ transition: background-color 0.15s ease;
 
 .dropdown {
  position: relative;
+ display: inline-flex; 
+ align-items: center;
 }
 
 
@@ -92,6 +99,10 @@ color: white;
  
 .dropdown:hover .dropdown-content {
  display: block;
+} 
+
+.dropdown:focus-within .dropdown-content { 
+    display:block;
 }
 
 #menu-toggle { 
