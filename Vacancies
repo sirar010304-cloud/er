@@ -854,23 +854,24 @@ body {
  <body style="background-color:white;">
     <a href="#jobslist" class="skip-link">Skip to content</a>
  
-    <div class="navbar">
-   
-        <a href=Hot%20Beans%20Web.html>Home</a>
-    <div class="dropdown">
-     <a href="Hot%20Beans%20Web-About%20us%20.html">About us</a>
-     
-     <div class="dropdown-content">
-      <a href=Hot%20Beans%20Web-Contact%20us%20%20.html>Contact us</a>
-      <a href=Hot%20Beans%20Web-Our%20mission%20.html>Our mission</a>
-      <a href="">History</a>
-     </div>
+<div class="navbar">
+    <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <div id="nav-links" class="navbar-links">
+        <a href="Hot%20Beans%20Web.html">Home</a>
+        <div class="dropdown">
+            <a href="Hot%20Beans%20Web-About%20us%20.html">About us</a>
+            <div class="dropdown-content">
+                <a href="Hot%20Beans%20Web-Contact%20us%20%20.html">Contact us</a>
+                <a href="Hot%20Beans%20Web-Our%20mission%20.html">Our mission</a>
+                <a href="">History</a>
+            </div>
+        </div>
+        <a href="Hot%20beans%20web-Meet%20our%20team.html">Meet our team</a>
+        <a href="Hot%20Beans%20Web-Vacancies.html">Vacancies</a>
+        <a href="Hot%20Beans%20Web-Application.html">Application form</a>
+        <a href="Hot%20beans%20web-Courses.html">Courses</a>
     </div>
-    <a href=Hot%20beans%20web-Meet%20our%20team.html>Meet our team</a>
-    <a href=Hot%20Beans%20Web-Vacancies.html>Vacancies</a>
-    <a href=Hot%20Beans%20Web-Application.html>Application form</a>
-     <a href=Hot%20beans%20web-Courses.html>Courses</a>
- </div>
+</div>
     
  <section class="hero"> 
      <div class="hero-text">
