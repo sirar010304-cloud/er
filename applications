@@ -58,14 +58,7 @@ body {
     background-color:#17adb3;
 }
 
-.dropdown-content {
- display:none;
- position: absolute;
- background-color: #043b3d;
- min-width: 160px;
- box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
- z-index: 10001;
-} 
+
 
 .dropdown-content{ 
     display: none; 
@@ -217,7 +210,9 @@ p{
   button:hover {
     background:#17adb3;
     color: #052729;
-  } 
+  }  
+
+  
 
   .info-panel { 
     flex: 0 0 300px; 
@@ -232,6 +227,7 @@ p{
     z-index:1; 
     position: relative;
   }   
+
 
   .info-panel h2 { color:#17adb3; margin-bottom: 15px ; } 
   .info-panel p { margin-bottom: 10px; } 
@@ -251,7 +247,7 @@ p{
   .tech4 { top:350px; right: -30px; animation-delay: 3s;} 
 
   @keyframes floatIcons { 
-    0% { transform: translateY(opx);} 
+    0% { transform: translateY(0px);} 
     50% { transform: translateY(-20px);} 
     100%{ transform: translateY(0px);} 
   } 
@@ -512,11 +508,7 @@ footer {
     display:none; 
     z-index: 998;
 }
-
-
-
-
-@media (max-width: 640px) { 
+@media (max-width: 600px) {
     .container { 
         margin: 20px; 
         padding: 20px;
@@ -536,7 +528,37 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+} 
+
 }
+
+#successPopup {
+    display: none; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);  
+    z-index: 9999;
+
+    display: flex;             
+    justify-content: center;
+    align-items: center;
+}
+
+
+#successPopup .popup-card {
+    background-color: #fff; 
+    padding: 30px; 
+    border-radius: 12px; 
+    max-width: 450px;         
+    width: 80%;               
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
 </style>
  </head>
  
@@ -611,14 +633,9 @@ body {
     </div>
  </div>
 
-        <div id="successModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="successTitle">
-        <div class="modal-content" tabindex="-1" role="document">
-        </div>
-     </div>
+ 
 
-    <!-- Centered toast-style success card -->
-    <div id="successToast" class="toast-card" role="status" aria-live="polite" aria-hidden="true" tabindex="-1">
-    </div>
+
 
  <footer>
      
@@ -677,48 +694,6 @@ body {
 
 </footer>
 
-<script>
-    const form = document.getElementById("JobForm");
-    const modal = document.getElementById("successModal");
-    const modalContent = modal ? modal.querySelector('.modal-content') : null;
-    const closeBtn = modal ? modal.querySelector('.close-btn') : null;
-    let lastFocusedElement = null;
-
-    function openModal(){
-      if(!modal) return;
-      lastFocusedElement = document.activeElement;
-      modal.style.display = 'flex';
-      modal.setAttribute('aria-hidden','false');
-      if(modalContent) modalContent.focus();
-      document.addEventListener('keydown', handleModalKeydown);
-    }
-
-    function closeModal(){
-      if(!modal) return;
-      modal.style.display = 'none';
-      modal.setAttribute('aria-hidden','true');
-      if(lastFocusedElement) lastFocusedElement.focus();
-      document.removeEventListener('keydown', handleModalKeydown);
-    }
-
-    function handleModalKeydown(e){
-      if(e.key === 'Escape') closeModal();
-    }
-
-    if (form) {
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        openModal();
-        setTimeout(closeModal, 4000);
-      });
-    }
-
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-    if (modal) {
-      modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
-    }
-</script> 
 
 
 <div id="reading-guide"></div> 
@@ -897,7 +872,67 @@ body {
 
 </script> 
 
+<script> 
+const form = document.getElementById("JobForm");
 
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Create the popup div
+    const successPopup = document.createElement("div");
+    successPopup.id = "successPopup";
+    successPopup.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    `;
+
+    // Create popup content
+    successPopup.innerHTML = `
+        <div class="popup-card" style="
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 450px;
+            width: 80%;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            position: relative;
+        ">
+            <button style="
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                font-size: 24px;
+                background: none;
+                border: none;
+                cursor: pointer;
+            " class="close-popup">&times;</button>
+            <h2>Application Submitted!</h2>
+            <p>Thank you for applying to Hot Beans Web. We have received your application and will review it shortly. We appreciate your interest in joining our team!</p>
+        </div>
+    `;
+
+    // Append popup to body
+    document.body.appendChild(successPopup);
+
+    // Close button functionality
+    successPopup.querySelector(".close-popup").addEventListener("click", () => {
+        successPopup.remove();
+    });
+
+    // Reset the form
+    form.reset();
+});
+    </script>
 
 </body>
 </html>
+
